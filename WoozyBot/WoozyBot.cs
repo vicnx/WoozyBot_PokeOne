@@ -26,7 +26,7 @@ namespace WoozyBot
             InitializeComponent();
             materialSkinManager = MaterialSkin.MaterialSkinManager.Instance;
             materialSkinManager.Theme = MaterialSkin.MaterialSkinManager.Themes.LIGHT;
-            materialSkinManager.ColorScheme = new MaterialSkin.ColorScheme(MaterialSkin.Primary.Indigo500, MaterialSkin.Primary.Indigo700, MaterialSkin.Primary.Indigo100, MaterialSkin.Accent.Pink200, MaterialSkin.TextShade.WHITE);
+            materialSkinManager.ColorScheme = new MaterialSkin.ColorScheme(MaterialSkin.Primary.Green500, MaterialSkin.Primary.Green700, MaterialSkin.Primary.Green100, MaterialSkin.Accent.Pink200, MaterialSkin.TextShade.WHITE);
         }
 
         private void WoozyBot_Load(object sender, EventArgs e)
@@ -78,7 +78,6 @@ namespace WoozyBot
                 //Mientras este en una batalla
                 while (PixelDetect(0x568A1F, 1177, 1040, 1920, 1080) == true)
                 {
-                    MessageBox.Show("BATALLAAAAA");
                     if (PixelDetect(0x512F00, 0, 0, 1920, 1080) == true)
                     {
                         MessageBox.Show("ALGO ESPECIAL ENCONTRADO MAS NAO IDENTIFICADO :(");
