@@ -1,0 +1,14 @@
+D:\vicen\Documents\Proyectos\Windows\WoozyBot\WoozyBot\bin\Debug\WoozyBot.exe.config
+D:\vicen\Documents\Proyectos\Windows\WoozyBot\WoozyBot\bin\Debug\WoozyBot.exe
+D:\vicen\Documents\Proyectos\Windows\WoozyBot\WoozyBot\bin\Debug\WoozyBot.pdb
+D:\vicen\Documents\Proyectos\Windows\WoozyBot\WoozyBot\bin\Debug\MaterialSkin.dll
+D:\vicen\Documents\Proyectos\Windows\WoozyBot\WoozyBot\obj\Debug\WoozyBot.csproj.AssemblyReference.cache
+D:\vicen\Documents\Proyectos\Windows\WoozyBot\WoozyBot\obj\Debug\Interop.AutoItX3Lib.dll
+D:\vicen\Documents\Proyectos\Windows\WoozyBot\WoozyBot\obj\Debug\WoozyBot.csproj.ResolveComReference.cache
+D:\vicen\Documents\Proyectos\Windows\WoozyBot\WoozyBot\obj\Debug\WoozyBot.WoozyBot.resources
+D:\vicen\Documents\Proyectos\Windows\WoozyBot\WoozyBot\obj\Debug\WoozyBot.Properties.Resources.resources
+D:\vicen\Documents\Proyectos\Windows\WoozyBot\WoozyBot\obj\Debug\WoozyBot.csproj.GenerateResource.cache
+D:\vicen\Documents\Proyectos\Windows\WoozyBot\WoozyBot\obj\Debug\WoozyBot.csproj.CoreCompileInputs.cache
+D:\vicen\Documents\Proyectos\Windows\WoozyBot\WoozyBot\obj\Debug\WoozyBot.csproj.CopyComplete
+D:\vicen\Documents\Proyectos\Windows\WoozyBot\WoozyBot\obj\Debug\WoozyBot.exe
+D:\vicen\Documents\Proyectos\Windows\WoozyBot\WoozyBot\obj\Debug\WoozyBot.pdb
