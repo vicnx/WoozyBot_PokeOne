@@ -28,8 +28,11 @@ namespace WoozyBot
         {
             InitializeComponent();
             materialSkinManager = MaterialSkin.MaterialSkinManager.Instance;
-            materialSkinManager.Theme = MaterialSkin.MaterialSkinManager.Themes.LIGHT;
-            materialSkinManager.ColorScheme = new MaterialSkin.ColorScheme(MaterialSkin.Primary.Green500, MaterialSkin.Primary.Green700, MaterialSkin.Primary.Green100, MaterialSkin.Accent.Pink200, MaterialSkin.TextShade.WHITE);
+
+            materialSkinManager.AddFormToManage(this);
+            materialSkinManager.Theme = MaterialSkin.MaterialSkinManager.Themes.DARK;
+            materialSkinManager.EnforceBackcolorOnAllComponents = false;
+            materialSkinManager.ColorScheme = new MaterialSkin.ColorScheme(MaterialSkin.Primary.Green500, MaterialSkin.Primary.Green700, MaterialSkin.Primary.Green100, MaterialSkin.Accent.Green700, MaterialSkin.TextShade.WHITE);
         }
 
         private void WoozyBot_Load(object sender, EventArgs e)
@@ -161,7 +164,7 @@ namespace WoozyBot
         {
             Random r = new Random();
             string[] pasos = new string[] { "www", "sss", "ddd", "aaa" };
-            string mode = groupBoxMoves.Controls.OfType<RadioButton>().FirstOrDefault(j => j.Checked).Name;
+            string mode = groupBoxMove2.Controls.OfType<RadioButton>().FirstOrDefault(j => j.Checked).Name;
             switch (mode)
             {
                 case "randomRadio":
@@ -223,6 +226,11 @@ namespace WoozyBot
         }
 
         private void groupBoxOptions_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Player_Click(object sender, EventArgs e)
         {
 
         }
