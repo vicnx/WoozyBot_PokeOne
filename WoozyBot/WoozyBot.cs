@@ -28,7 +28,6 @@ namespace WoozyBot
         {
             InitializeComponent();
             materialSkinManager = MaterialSkin.MaterialSkinManager.Instance;
-
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkin.MaterialSkinManager.Themes.DARK;
             materialSkinManager.EnforceBackcolorOnAllComponents = false;
@@ -42,29 +41,51 @@ namespace WoozyBot
 
         private void StartButton_Click(object sender, EventArgs e)
         {
-            if (backgroundWorker1.IsBusy != true)
+            if (checkGameOpen())
             {
-                backgroundWorker1.RunWorkerAsync();
-                StartButton.Enabled = false;
-                StopButton.Enabled = true;
-                getPokeOnePosition();
+                if (backgroundWorker1.IsBusy != true)
+                {
+                    backgroundWorker1.RunWorkerAsync();
+                    StartButton.Enabled = false;
+                    StopButton.Enabled = true;
+                    getPokeOnePosition();
+                    au3.WinActivate("PokeOne"); //Se situa sobre el juego
+                }
             }
+            else
+            {
+                MessageBox.Show("El juego esta cerrado, abrelo antes de pulsar Start.");
+            }
+
         }
 
         private void StopButton_Click(object sender, EventArgs e)
         {
+            StopBot();
+        }
+
+        void StopBot()
+        {
             if (backgroundWorker1.IsBusy != false)
             {
                 backgroundWorker1.CancelAsync();
-                StartButton.Enabled = true;
-                StopButton.Enabled = false;
+
+                if (StartButton.InvokeRequired)
+                {
+                    StartButton.Invoke(new MethodInvoker(delegate
+                    {
+
+                        StartButton.Enabled = true;
+                        StopButton.Enabled = false;
+                    }));
+                }
             }
         }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             BackgroundWorker worker = sender as BackgroundWorker;
-            while (true)
+            while (checkGameOpen())
             {
                 if (worker.CancellationPending == true)
                 {
@@ -88,24 +109,10 @@ namespace WoozyBot
                         }
                     }
                 }
-                //if (detectarPixel(0x568A1F, 1177, 1040, 1920, 1080) == true) // detecta el pixel verde de HUIR (Entocnes es que esta en una batalla)
-                //{
-                //    MessageBox.Show("BATALLAAAAA");
-                //    if (detectarPixel(0x512F00, 0, 0, 1920, 1080) == true) 
-                //    {
-                //        MessageBox.Show("ALGO ESPECIAL ENCONTRADO MAS NAO IDENTIFICADO :(");
-                //        break;
-                //    }
-                //    else
-                //    {
-                //        if (!fugir.Checked)
-                //        {
-                //            atacar();
-                //        }
-
-                //    }
-                //}
             }
+            MessageBox.Show("Has cerrado el juego, abrelo para continuar.");
+
+            StopBot();
         }
         void atacar()
         {
@@ -139,16 +146,6 @@ namespace WoozyBot
                 au3.MouseClick("LEFT", PokeOneWindowX + 824, PokeOneWindowY + 618, 1, 2);//Move 4
             }
         }
-
-        //void movePlayer(string direction, int steps)
-        //{
-        //    Random r = new Random();
-        //    for (int i = 0; i < steps; i++)
-        //    {
-        //        au3.Send(direction);
-        //        Thread.Sleep(r.Next(200,300));
-        //    }
-        //}
 
         void moveAction(string direction)
         {
@@ -209,6 +206,19 @@ namespace WoozyBot
         {
             PokeOneWindowX = au3.WinGetPosX("PokeOne");
             PokeOneWindowY = au3.WinGetPosY("PokeOne");
+        }
+
+        bool checkGameOpen()
+        {
+            if(au3.WinExists("PokeOne") == 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
         }
         private void move2_CheckedChanged(object sender, EventArgs e)
         {

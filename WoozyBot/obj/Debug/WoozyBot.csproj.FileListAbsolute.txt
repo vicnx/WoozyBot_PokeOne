@@ -25,3 +25,4 @@ D:\vicen\Documents\Proyectos\Windows\WoozyBot_PokeOne\WoozyBot\obj\Debug\WoozyBo
 D:\vicen\Documents\Proyectos\Windows\WoozyBot_PokeOne\WoozyBot\obj\Debug\WoozyBot.csproj.CopyComplete
 D:\vicen\Documents\Proyectos\Windows\WoozyBot_PokeOne\WoozyBot\obj\Debug\WoozyBot.exe
 D:\vicen\Documents\Proyectos\Windows\WoozyBot_PokeOne\WoozyBot\obj\Debug\WoozyBot.pdb
+D:\vicen\Documents\Proyectos\Windows\WoozyBot_PokeOne\WoozyBot\obj\Debug\WoozyBot.csproj.AssemblyReference.cache
