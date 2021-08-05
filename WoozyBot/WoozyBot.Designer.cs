@@ -34,9 +34,7 @@ namespace WoozyBot
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.StartButton = new MaterialSkin.Controls.MaterialButton();
             this.StopButton = new MaterialSkin.Controls.MaterialButton();
-            this.random = new MaterialSkin.Controls.MaterialCheckbox();
             this.AlwaysRun = new MaterialSkin.Controls.MaterialCheckbox();
-            this.materialCheckedListBox1 = new MaterialSkin.Controls.MaterialCheckedListBox();
             this.move2 = new MaterialSkin.Controls.MaterialCheckbox();
             this.move1 = new MaterialSkin.Controls.MaterialCheckbox();
             this.move3 = new MaterialSkin.Controls.MaterialCheckbox();
@@ -46,9 +44,13 @@ namespace WoozyBot
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.TitleMenu = new System.Windows.Forms.Label();
             this.movausarLabel = new MaterialSkin.Controls.MaterialLabel();
-            this.materialCheckedListBox1.SuspendLayout();
+            this.groupBoxMoves = new System.Windows.Forms.GroupBox();
+            this.randomRadio = new MaterialSkin.Controls.MaterialRadioButton();
+            this.updownRadio = new MaterialSkin.Controls.MaterialRadioButton();
+            this.defaultRadio = new MaterialSkin.Controls.MaterialRadioButton();
             this.materialCheckedListBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.groupBoxMoves.SuspendLayout();
             this.SuspendLayout();
             // 
             // backgroundWorker1
@@ -62,7 +64,7 @@ namespace WoozyBot
             this.StartButton.DrawShadows = true;
             this.StartButton.HighEmphasis = true;
             this.StartButton.Icon = null;
-            this.StartButton.Location = new System.Drawing.Point(10, 232);
+            this.StartButton.Location = new System.Drawing.Point(13, 285);
             this.StartButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.StartButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.StartButton.Name = "StartButton";
@@ -83,7 +85,7 @@ namespace WoozyBot
             this.StopButton.Enabled = false;
             this.StopButton.HighEmphasis = true;
             this.StopButton.Icon = null;
-            this.StopButton.Location = new System.Drawing.Point(85, 232);
+            this.StopButton.Location = new System.Drawing.Point(88, 285);
             this.StopButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.StopButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.StopButton.Name = "StopButton";
@@ -95,26 +97,11 @@ namespace WoozyBot
             this.StopButton.UseVisualStyleBackColor = false;
             this.StopButton.Click += new System.EventHandler(this.StopButton_Click);
             // 
-            // random
-            // 
-            this.random.AutoSize = true;
-            this.random.Depth = 0;
-            this.random.Location = new System.Drawing.Point(16, 50);
-            this.random.Margin = new System.Windows.Forms.Padding(0);
-            this.random.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.random.MouseState = MaterialSkin.MouseState.HOVER;
-            this.random.Name = "random";
-            this.random.Ripple = true;
-            this.random.Size = new System.Drawing.Size(95, 37);
-            this.random.TabIndex = 2;
-            this.random.Text = "Random";
-            this.random.UseVisualStyleBackColor = true;
-            // 
             // AlwaysRun
             // 
             this.AlwaysRun.AutoSize = true;
             this.AlwaysRun.Depth = 0;
-            this.AlwaysRun.Location = new System.Drawing.Point(16, 13);
+            this.AlwaysRun.Location = new System.Drawing.Point(9, 236);
             this.AlwaysRun.Margin = new System.Windows.Forms.Padding(0);
             this.AlwaysRun.MouseLocation = new System.Drawing.Point(-1, -1);
             this.AlwaysRun.MouseState = MaterialSkin.MouseState.HOVER;
@@ -124,21 +111,7 @@ namespace WoozyBot
             this.AlwaysRun.TabIndex = 3;
             this.AlwaysRun.Text = "Huir Siempre";
             this.AlwaysRun.UseVisualStyleBackColor = true;
-            // 
-            // materialCheckedListBox1
-            // 
-            this.materialCheckedListBox1.AutoScroll = true;
-            this.materialCheckedListBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.materialCheckedListBox1.Controls.Add(this.AlwaysRun);
-            this.materialCheckedListBox1.Controls.Add(this.random);
-            this.materialCheckedListBox1.Depth = 0;
-            this.materialCheckedListBox1.Location = new System.Drawing.Point(10, 93);
-            this.materialCheckedListBox1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialCheckedListBox1.Name = "materialCheckedListBox1";
-            this.materialCheckedListBox1.Size = new System.Drawing.Size(160, 101);
-            this.materialCheckedListBox1.Striped = false;
-            this.materialCheckedListBox1.StripeDarkColor = System.Drawing.Color.Empty;
-            this.materialCheckedListBox1.TabIndex = 4;
+            this.AlwaysRun.CheckedChanged += new System.EventHandler(this.AlwaysRun_CheckedChanged);
             // 
             // move2
             // 
@@ -210,7 +183,7 @@ namespace WoozyBot
             this.materialCheckedListBox2.Controls.Add(this.move2);
             this.materialCheckedListBox2.Controls.Add(this.move3);
             this.materialCheckedListBox2.Depth = 0;
-            this.materialCheckedListBox2.Location = new System.Drawing.Point(182, 93);
+            this.materialCheckedListBox2.Location = new System.Drawing.Point(182, 102);
             this.materialCheckedListBox2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCheckedListBox2.Name = "materialCheckedListBox2";
             this.materialCheckedListBox2.Size = new System.Drawing.Size(160, 177);
@@ -223,13 +196,13 @@ namespace WoozyBot
             this.OpcionesLabel.AutoSize = true;
             this.OpcionesLabel.BackColor = System.Drawing.Color.Transparent;
             this.OpcionesLabel.Depth = 0;
-            this.OpcionesLabel.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.OpcionesLabel.Location = new System.Drawing.Point(54, 71);
+            this.OpcionesLabel.Font = new System.Drawing.Font("Roboto", 11F);
+            this.OpcionesLabel.Location = new System.Drawing.Point(12, 78);
             this.OpcionesLabel.MouseState = MaterialSkin.MouseState.HOVER;
             this.OpcionesLabel.Name = "OpcionesLabel";
-            this.OpcionesLabel.Size = new System.Drawing.Size(67, 19);
+            this.OpcionesLabel.Size = new System.Drawing.Size(157, 19);
             this.OpcionesLabel.TabIndex = 10;
-            this.OpcionesLabel.Text = "Opciones";
+            this.OpcionesLabel.Text = "Movimiento del player";
             this.OpcionesLabel.Click += new System.EventHandler(this.materialLabel1_Click);
             // 
             // pictureBox1
@@ -261,24 +234,86 @@ namespace WoozyBot
             this.movausarLabel.BackColor = System.Drawing.Color.Transparent;
             this.movausarLabel.Depth = 0;
             this.movausarLabel.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.movausarLabel.Location = new System.Drawing.Point(220, 71);
+            this.movausarLabel.Location = new System.Drawing.Point(220, 80);
             this.movausarLabel.MouseState = MaterialSkin.MouseState.HOVER;
             this.movausarLabel.Name = "movausarLabel";
             this.movausarLabel.Size = new System.Drawing.Size(92, 19);
             this.movausarLabel.TabIndex = 11;
             this.movausarLabel.Text = "Movs. a usar";
             // 
+            // groupBoxMoves
+            // 
+            this.groupBoxMoves.BackColor = System.Drawing.Color.Gainsboro;
+            this.groupBoxMoves.Controls.Add(this.defaultRadio);
+            this.groupBoxMoves.Controls.Add(this.updownRadio);
+            this.groupBoxMoves.Controls.Add(this.randomRadio);
+            this.groupBoxMoves.Location = new System.Drawing.Point(12, 101);
+            this.groupBoxMoves.Name = "groupBoxMoves";
+            this.groupBoxMoves.Size = new System.Drawing.Size(157, 132);
+            this.groupBoxMoves.TabIndex = 14;
+            this.groupBoxMoves.TabStop = false;
+            // 
+            // randomRadio
+            // 
+            this.randomRadio.AutoSize = true;
+            this.randomRadio.Depth = 0;
+            this.randomRadio.Location = new System.Drawing.Point(7, 84);
+            this.randomRadio.Margin = new System.Windows.Forms.Padding(0);
+            this.randomRadio.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.randomRadio.MouseState = MaterialSkin.MouseState.HOVER;
+            this.randomRadio.Name = "randomRadio";
+            this.randomRadio.Ripple = true;
+            this.randomRadio.Size = new System.Drawing.Size(95, 37);
+            this.randomRadio.TabIndex = 0;
+            this.randomRadio.TabStop = true;
+            this.randomRadio.Text = "Random";
+            this.randomRadio.UseVisualStyleBackColor = true;
+            // 
+            // updownRadio
+            // 
+            this.updownRadio.AutoSize = true;
+            this.updownRadio.Depth = 0;
+            this.updownRadio.Location = new System.Drawing.Point(7, 47);
+            this.updownRadio.Margin = new System.Windows.Forms.Padding(0);
+            this.updownRadio.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.updownRadio.MouseState = MaterialSkin.MouseState.HOVER;
+            this.updownRadio.Name = "updownRadio";
+            this.updownRadio.Ripple = true;
+            this.updownRadio.Size = new System.Drawing.Size(93, 37);
+            this.updownRadio.TabIndex = 1;
+            this.updownRadio.TabStop = true;
+            this.updownRadio.Text = "Updown";
+            this.updownRadio.UseVisualStyleBackColor = true;
+            // 
+            // defaultRadio
+            // 
+            this.defaultRadio.AutoSize = true;
+            this.defaultRadio.Checked = true;
+            this.defaultRadio.Depth = 0;
+            this.defaultRadio.Location = new System.Drawing.Point(7, 10);
+            this.defaultRadio.Margin = new System.Windows.Forms.Padding(0);
+            this.defaultRadio.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.defaultRadio.MouseState = MaterialSkin.MouseState.HOVER;
+            this.defaultRadio.Name = "defaultRadio";
+            this.defaultRadio.Ripple = true;
+            this.defaultRadio.Size = new System.Drawing.Size(87, 37);
+            this.defaultRadio.TabIndex = 2;
+            this.defaultRadio.TabStop = true;
+            this.defaultRadio.Text = "Default";
+            this.defaultRadio.UseVisualStyleBackColor = true;
+            // 
             // WoozyBot
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(352, 283);
+            this.ClientSize = new System.Drawing.Size(355, 336);
+            this.Controls.Add(this.AlwaysRun);
+            this.Controls.Add(this.groupBoxMoves);
             this.Controls.Add(this.TitleMenu);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.movausarLabel);
             this.Controls.Add(this.OpcionesLabel);
             this.Controls.Add(this.materialCheckedListBox2);
-            this.Controls.Add(this.materialCheckedListBox1);
             this.Controls.Add(this.StopButton);
             this.Controls.Add(this.StartButton);
             this.DrawerHighlightWithAccent = false;
@@ -289,11 +324,11 @@ namespace WoozyBot
             this.Sizable = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.WoozyBot_Load);
-            this.materialCheckedListBox1.ResumeLayout(false);
-            this.materialCheckedListBox1.PerformLayout();
             this.materialCheckedListBox2.ResumeLayout(false);
             this.materialCheckedListBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.groupBoxMoves.ResumeLayout(false);
+            this.groupBoxMoves.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -303,9 +338,7 @@ namespace WoozyBot
 
         private MaterialSkin.Controls.MaterialButton StartButton;
         private MaterialSkin.Controls.MaterialButton StopButton;
-        private MaterialSkin.Controls.MaterialCheckbox random;
         private MaterialSkin.Controls.MaterialCheckbox AlwaysRun;
-        private MaterialSkin.Controls.MaterialCheckedListBox materialCheckedListBox1;
         private MaterialSkin.Controls.MaterialCheckbox move2;
         private MaterialSkin.Controls.MaterialCheckbox move1;
         private MaterialSkin.Controls.MaterialCheckbox move3;
@@ -315,6 +348,10 @@ namespace WoozyBot
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label TitleMenu;
         private MaterialSkin.Controls.MaterialLabel movausarLabel;
+        private System.Windows.Forms.GroupBox groupBoxMoves;
+        private MaterialSkin.Controls.MaterialRadioButton updownRadio;
+        private MaterialSkin.Controls.MaterialRadioButton randomRadio;
+        private MaterialSkin.Controls.MaterialRadioButton defaultRadio;
     }
 }
 
