@@ -21,8 +21,7 @@ namespace WoozyBot
         readonly MaterialSkin.MaterialSkinManager materialSkinManager;
         AutoItX3 au3 = new AutoItX3();
         public object[] pixCoord;
-        public int PokeOneWindowX;
-        public int PokeOneWindowY;
+        public int PokeOneWindowX, PokeOneWindowY;
 
         public WoozyBot()
         {
@@ -38,8 +37,7 @@ namespace WoozyBot
         {
             backgroundWorker1.WorkerSupportsCancellation = true;
         }
-
-        private void StartButton_Click(object sender, EventArgs e)
+        public void Start()
         {
             if (checkGameOpen())
             {
@@ -48,7 +46,7 @@ namespace WoozyBot
                     backgroundWorker1.RunWorkerAsync();
                     StartButton.Enabled = false;
                     StopButton.Enabled = true;
-                    getPokeOnePosition();
+                    getGamePosition();
                     au3.WinActivate("PokeOne"); //Se situa sobre el juego
                 }
             }
@@ -56,15 +54,8 @@ namespace WoozyBot
             {
                 MessageBox.Show("El juego esta cerrado, abrelo antes de pulsar Start.");
             }
-
         }
-
-        private void StopButton_Click(object sender, EventArgs e)
-        {
-            StopBot();
-        }
-
-        void StopBot()
+        public void Stop()
         {
             if (backgroundWorker1.IsBusy != false)
             {
@@ -81,22 +72,32 @@ namespace WoozyBot
                 }
             }
         }
+        private void StartButton_Click(object sender, EventArgs e)
+        {
+            Start();
+        }
+
+        private void StopButton_Click(object sender, EventArgs e)
+        {
+            Stop();
+        }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             BackgroundWorker worker = sender as BackgroundWorker;
-            while (checkGameOpen())
+            while (checkGameOpen())//mientras el juego este abierto
             {
                 if (worker.CancellationPending == true)
                 {
                     break;
-
                 }
+
                 movePlayer();
+
                 //Mientras este en una batalla
                 while (PixelDetect(0x568A1F, 864, 684, 1920, 1080) == true)
                 {
-                    if (PixelDetect(0x512F00, 0, 0, 1920, 1080) == true) //NOT WORKING
+                    if (PixelDetect(0x512F00, 0, 0, 1920, 1080) == true) //NOT WORKING NOW
                     {
                         MessageBox.Show("SHINY");
                         break;
@@ -110,15 +111,16 @@ namespace WoozyBot
                     }
                 }
             }
-            MessageBox.Show("Has cerrado el juego, abrelo para continuar.");
 
-            StopBot();
+            //Si se cierra el juego se sale del loop y se ejecuta lo siguiente
+            MessageBox.Show("Has cerrado el juego, abrelo para continuar.");
+            Stop();
         }
         void atacar()
         {
             Random r = new Random();
             //Refrescamos la posicion del juego para evitar errores
-            getPokeOnePosition();
+            getGamePosition();
             au3.MouseClick("LEFT", PokeOneWindowX + 691, PokeOneWindowY + 616, 1, 2);
             Thread.Sleep(500);
             if (move1.Checked)
@@ -182,7 +184,7 @@ namespace WoozyBot
         bool PixelDetect(int pixel, int xcima, int ycima, int xbaixo, int ybaixo)
         {
             //Refrescamos la posicion del juego para evitar errores
-            getPokeOnePosition();
+            getGamePosition();
             //Ahora el juego tiene que estar en 1280 y 720 windowed mode para que funcione relativo
             Object pix = au3.PixelSearch(xcima, ycima, PokeOneWindowX + 1280, PokeOneWindowY +720, pixel);
             if (pix.ToString() != "1")
@@ -202,7 +204,7 @@ namespace WoozyBot
                 return false;
             }
         }
-        void getPokeOnePosition()
+        void getGamePosition()
         {
             PokeOneWindowX = au3.WinGetPosX("PokeOne");
             PokeOneWindowY = au3.WinGetPosY("PokeOne");
@@ -210,14 +212,9 @@ namespace WoozyBot
 
         bool checkGameOpen()
         {
-            if(au3.WinExists("PokeOne") == 1)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            bool result;
+            result = au3.WinExists("PokeOne") == 1 ? true : false;
+            return result;
 
         }
         private void move2_CheckedChanged(object sender, EventArgs e)

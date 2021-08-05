@@ -337,7 +337,7 @@ namespace WoozyBot
             this.Moves.Location = new System.Drawing.Point(4, 42);
             this.Moves.Name = "Moves";
             this.Moves.Padding = new System.Windows.Forms.Padding(3);
-            this.Moves.Size = new System.Drawing.Size(274, 297);
+            this.Moves.Size = new System.Drawing.Size(323, 297);
             this.Moves.TabIndex = 1;
             this.Moves.Text = "Settings";
             this.Moves.UseVisualStyleBackColor = true;
@@ -368,7 +368,7 @@ namespace WoozyBot
             this.ShowIcon = false;
             this.Sizable = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "WoozyBot";
+            this.Text = "WoozyBot (Beta)";
             this.Load += new System.EventHandler(this.WoozyBot_Load);
             this.materialCheckedListBox2.ResumeLayout(false);
             this.materialCheckedListBox2.PerformLayout();
