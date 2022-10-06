@@ -237,6 +237,16 @@ namespace WoozyBot
 
         }
 
+        private void materialLabel1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialLabel1_Click_2(object sender, EventArgs e)
+        {
+
+        }
+
         private void Player_Click(object sender, EventArgs e)
         {
 

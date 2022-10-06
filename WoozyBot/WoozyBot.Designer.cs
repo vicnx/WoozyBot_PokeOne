@@ -32,6 +32,7 @@ namespace WoozyBot
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WoozyBot));
+            MaterialSkin.Controls.MaterialLabel inFoText;
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.StartButton = new MaterialSkin.Controls.MaterialButton();
             this.StopButton = new MaterialSkin.Controls.MaterialButton();
@@ -51,11 +52,14 @@ namespace WoozyBot
             this.Player = new System.Windows.Forms.TabPage();
             this.Moves = new System.Windows.Forms.TabPage();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.Info = new System.Windows.Forms.TabPage();
+            inFoText = new MaterialSkin.Controls.MaterialLabel();
             this.materialCheckedListBox2.SuspendLayout();
             this.groupBoxMove2.SuspendLayout();
             this.materialTabControl1.SuspendLayout();
             this.Player.SuspendLayout();
             this.Moves.SuspendLayout();
+            this.Info.SuspendLayout();
             this.SuspendLayout();
             // 
             // backgroundWorker1
@@ -301,6 +305,7 @@ namespace WoozyBot
             this.materialTabControl1.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
             this.materialTabControl1.Controls.Add(this.Player);
             this.materialTabControl1.Controls.Add(this.Moves);
+            this.materialTabControl1.Controls.Add(this.Info);
             this.materialTabControl1.Depth = 0;
             this.materialTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.materialTabControl1.ImageList = this.imageList1;
@@ -350,17 +355,45 @@ namespace WoozyBot
             this.imageList1.Images.SetKeyName(1, "user.png");
             this.imageList1.Images.SetKeyName(2, "settings_16px.png");
             this.imageList1.Images.SetKeyName(3, "user_16px.png");
+            this.imageList1.Images.SetKeyName(4, "information.png");
+            // 
+            // Info
+            // 
+            this.Info.Controls.Add(inFoText);
+            this.Info.ImageKey = "information.png";
+            this.Info.Location = new System.Drawing.Point(4, 42);
+            this.Info.Name = "Info";
+            this.Info.Padding = new System.Windows.Forms.Padding(3);
+            this.Info.Size = new System.Drawing.Size(323, 297);
+            this.Info.TabIndex = 2;
+            this.Info.Text = "Info";
+            this.Info.UseVisualStyleBackColor = true;
+            // 
+            // inFoText
+            // 
+            inFoText.Depth = 0;
+            inFoText.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            inFoText.Font = new System.Drawing.Font("Roboto Condensed", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            inFoText.Location = new System.Drawing.Point(8, 14);
+            inFoText.MouseState = MaterialSkin.MouseState.HOVER;
+            inFoText.Name = "inFoText";
+            inFoText.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            inFoText.Size = new System.Drawing.Size(261, 138);
+            inFoText.TabIndex = 1;
+            inFoText.Text = "Para que el BOT funcione correctamente tienes que aplicar la siguiente configurac" +
+    "ión:\n\nResolución: 1280x720\nModo: Ventana completa sin bordes (windowed mode)\n";
+            inFoText.Click += new System.EventHandler(this.materialLabel1_Click_2);
             // 
             // WoozyBot
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(331, 343);
             this.Controls.Add(this.materialTabControl1);
             this.DrawerHighlightWithAccent = false;
             this.DrawerShowIconsWhenHidden = true;
             this.DrawerTabControl = this.materialTabControl1;
-            this.Font = new System.Drawing.Font("Pricedown Bl", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.SystemColors.Control;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -379,6 +412,7 @@ namespace WoozyBot
             this.Player.PerformLayout();
             this.Moves.ResumeLayout(false);
             this.Moves.PerformLayout();
+            this.Info.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -403,6 +437,7 @@ namespace WoozyBot
         private System.Windows.Forms.TabPage Player;
         private System.Windows.Forms.TabPage Moves;
         private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.TabPage Info;
     }
 }
 
