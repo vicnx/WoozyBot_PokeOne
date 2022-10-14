@@ -38,6 +38,7 @@ namespace WoozyBot
         {
             backgroundWorker1.WorkerSupportsCancellation = true;
             resolutionCombo.SelectedItem = "1920x1080";
+            changePKMCombo.SelectedItem = "Segundo";
         }
         public void Start()
         {
@@ -98,9 +99,9 @@ namespace WoozyBot
                 movePlayer();
 
                 //Mientras este en una batalla
-                while (PixelDetect(0x568A1F, 864, 684, 1920, 1080) == true)
+                while (PixelDetect(0x568A1F, 864, 684) == true)
                 {
-                    if (PixelDetect(0x512F00, 0, 0, 1920, 1080) == true) //NOT WORKING NOW
+                    if (PixelDetect(0x512F00, 0, 0) == true) //NOT WORKING NOW
                     {
                         MessageBox.Show("SHINY");
                         break;
@@ -165,33 +166,34 @@ namespace WoozyBot
             for (int i = 0; i < r.Next(2, 3); i++)
             {
                 au3.Send(direction);
-                Thread.Sleep(r.Next(200, 300));
+                Thread.Sleep(r.Next(100, 300));
             }
         }
 
         void movePlayer()//Se encarga de comprobar el modo seleccionado y ejecutar el movimiento.
         {
             Random r = new Random();
-            string[] pasos = new string[] { "www", "sss", "ddd", "aaa" };
+            string[] direccion = new string[] { "www", "sss", "ddd", "aaa" };
+            string[] direccion2 = new string[] { "www", "sss", "ddd", "aaa", "w", "s", "d", "a"};
             string mode = groupBoxMove2.Controls.OfType<RadioButton>().FirstOrDefault(j => j.Checked).Name;
             switch (mode)
             {
                 case "randomRadio":
-                    moveAction(pasos[r.Next(4)]);
+                    moveAction(direccion2[r.Next(8)]);
                     break;
                 case "updownRadio":
-                    moveAction(pasos[0]);
-                    moveAction(pasos[1]);
+                    moveAction(direccion[0]);
+                    moveAction(direccion[1]);
                     break;
                 default:
-                    moveAction(pasos[2]);
-                    moveAction(pasos[3]);
+                    moveAction(direccion[2]);
+                    moveAction(direccion[3]);
                     break;
 
             }
         }
 
-        bool PixelDetect(int pixel, int xcima, int ycima, int xbaixo, int ybaixo)
+        bool PixelDetect(int pixel, int xcima, int ycima)
         {
             //Refrescamos la posicion del juego para evitar errores
             getGamePosition();
@@ -234,9 +236,22 @@ namespace WoozyBot
             return result;
 
         }
+
         private void move2_CheckedChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void changePKM_CheckedChanged(object sender, EventArgs e)
+        {
+            if(changePKM.Checked == true)
+            {
+                changePKMCombo.Enabled = true;
+            }
+            else
+            {
+                changePKMCombo.Enabled = false;
+            }
         }
 
         private void materialLabel1_Click(object sender, EventArgs e)
