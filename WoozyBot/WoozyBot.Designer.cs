@@ -31,17 +31,13 @@ namespace WoozyBot
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WoozyBot));
             MaterialSkin.Controls.MaterialLabel inFoText;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WoozyBot));
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.StartButton = new MaterialSkin.Controls.MaterialButton();
             this.StopButton = new MaterialSkin.Controls.MaterialButton();
             this.AlwaysRun = new MaterialSkin.Controls.MaterialCheckbox();
-            this.move2 = new MaterialSkin.Controls.MaterialCheckbox();
             this.move1 = new MaterialSkin.Controls.MaterialCheckbox();
-            this.move3 = new MaterialSkin.Controls.MaterialCheckbox();
-            this.move4 = new MaterialSkin.Controls.MaterialCheckbox();
-            this.materialCheckedListBox2 = new MaterialSkin.Controls.MaterialCheckedListBox();
             this.OpcionesLabel = new MaterialSkin.Controls.MaterialLabel();
             this.movausarLabel = new MaterialSkin.Controls.MaterialLabel();
             this.defaultRadio = new MaterialSkin.Controls.MaterialRadioButton();
@@ -51,16 +47,37 @@ namespace WoozyBot
             this.materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
             this.Player = new System.Windows.Forms.TabPage();
             this.Moves = new System.Windows.Forms.TabPage();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.Info = new System.Windows.Forms.TabPage();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.move3 = new MaterialSkin.Controls.MaterialCheckbox();
+            this.move2 = new MaterialSkin.Controls.MaterialCheckbox();
+            this.move4 = new MaterialSkin.Controls.MaterialCheckbox();
+            this.materialCheckedListBox2 = new MaterialSkin.Controls.MaterialCheckedListBox();
+            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
+            this.resolutionCombo = new System.Windows.Forms.ComboBox();
             inFoText = new MaterialSkin.Controls.MaterialLabel();
-            this.materialCheckedListBox2.SuspendLayout();
             this.groupBoxMove2.SuspendLayout();
             this.materialTabControl1.SuspendLayout();
             this.Player.SuspendLayout();
             this.Moves.SuspendLayout();
             this.Info.SuspendLayout();
+            this.materialCheckedListBox2.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // inFoText
+            // 
+            inFoText.Depth = 0;
+            inFoText.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            inFoText.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            inFoText.Location = new System.Drawing.Point(8, 14);
+            inFoText.MouseState = MaterialSkin.MouseState.HOVER;
+            inFoText.Name = "inFoText";
+            inFoText.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            inFoText.Size = new System.Drawing.Size(223, 121);
+            inFoText.TabIndex = 1;
+            inFoText.Text = "Para que el BOT funcione correctamente tienes que configurar tu resolución (la de" +
+    "l juego) en la pestaña de configuración.\r\n";
+            inFoText.Click += new System.EventHandler(this.materialLabel1_Click_2);
             // 
             // backgroundWorker1
             // 
@@ -75,7 +92,7 @@ namespace WoozyBot
             this.StartButton.DrawShadows = true;
             this.StartButton.HighEmphasis = true;
             this.StartButton.Icon = null;
-            this.StartButton.Location = new System.Drawing.Point(115, 227);
+            this.StartButton.Location = new System.Drawing.Point(75, 227);
             this.StartButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.StartButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.StartButton.Name = "StartButton";
@@ -98,7 +115,7 @@ namespace WoozyBot
             this.StopButton.Enabled = false;
             this.StopButton.HighEmphasis = true;
             this.StopButton.Icon = null;
-            this.StopButton.Location = new System.Drawing.Point(190, 227);
+            this.StopButton.Location = new System.Drawing.Point(150, 227);
             this.StopButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.StopButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.StopButton.Name = "StopButton";
@@ -126,29 +143,13 @@ namespace WoozyBot
             this.AlwaysRun.UseVisualStyleBackColor = true;
             this.AlwaysRun.CheckedChanged += new System.EventHandler(this.AlwaysRun_CheckedChanged);
             // 
-            // move2
-            // 
-            this.move2.AutoSize = true;
-            this.move2.Depth = 0;
-            this.move2.Location = new System.Drawing.Point(10, 49);
-            this.move2.Margin = new System.Windows.Forms.Padding(0);
-            this.move2.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.move2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.move2.Name = "move2";
-            this.move2.Ripple = true;
-            this.move2.Size = new System.Drawing.Size(132, 37);
-            this.move2.TabIndex = 6;
-            this.move2.Text = "Movimiento 2";
-            this.move2.UseVisualStyleBackColor = true;
-            this.move2.CheckedChanged += new System.EventHandler(this.move2_CheckedChanged);
-            // 
             // move1
             // 
             this.move1.AutoSize = true;
             this.move1.Checked = true;
             this.move1.CheckState = System.Windows.Forms.CheckState.Checked;
             this.move1.Depth = 0;
-            this.move1.Location = new System.Drawing.Point(10, 12);
+            this.move1.Location = new System.Drawing.Point(40, 35);
             this.move1.Margin = new System.Windows.Forms.Padding(0);
             this.move1.MouseLocation = new System.Drawing.Point(-1, -1);
             this.move1.MouseState = MaterialSkin.MouseState.HOVER;
@@ -158,53 +159,6 @@ namespace WoozyBot
             this.move1.TabIndex = 5;
             this.move1.Text = "Movimiento 1";
             this.move1.UseVisualStyleBackColor = true;
-            // 
-            // move3
-            // 
-            this.move3.AutoSize = true;
-            this.move3.Depth = 0;
-            this.move3.Location = new System.Drawing.Point(10, 86);
-            this.move3.Margin = new System.Windows.Forms.Padding(0);
-            this.move3.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.move3.MouseState = MaterialSkin.MouseState.HOVER;
-            this.move3.Name = "move3";
-            this.move3.Ripple = true;
-            this.move3.Size = new System.Drawing.Size(132, 37);
-            this.move3.TabIndex = 7;
-            this.move3.Text = "Movimiento 3";
-            this.move3.UseVisualStyleBackColor = true;
-            // 
-            // move4
-            // 
-            this.move4.AutoSize = true;
-            this.move4.Depth = 0;
-            this.move4.Location = new System.Drawing.Point(10, 123);
-            this.move4.Margin = new System.Windows.Forms.Padding(0);
-            this.move4.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.move4.MouseState = MaterialSkin.MouseState.HOVER;
-            this.move4.Name = "move4";
-            this.move4.Ripple = true;
-            this.move4.Size = new System.Drawing.Size(132, 37);
-            this.move4.TabIndex = 8;
-            this.move4.Text = "Movimiento 4";
-            this.move4.UseVisualStyleBackColor = true;
-            // 
-            // materialCheckedListBox2
-            // 
-            this.materialCheckedListBox2.AutoScroll = true;
-            this.materialCheckedListBox2.BackColor = System.Drawing.SystemColors.Control;
-            this.materialCheckedListBox2.Controls.Add(this.move1);
-            this.materialCheckedListBox2.Controls.Add(this.move4);
-            this.materialCheckedListBox2.Controls.Add(this.move2);
-            this.materialCheckedListBox2.Controls.Add(this.move3);
-            this.materialCheckedListBox2.Depth = 0;
-            this.materialCheckedListBox2.Location = new System.Drawing.Point(28, 50);
-            this.materialCheckedListBox2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialCheckedListBox2.Name = "materialCheckedListBox2";
-            this.materialCheckedListBox2.Size = new System.Drawing.Size(160, 177);
-            this.materialCheckedListBox2.Striped = false;
-            this.materialCheckedListBox2.StripeDarkColor = System.Drawing.Color.Empty;
-            this.materialCheckedListBox2.TabIndex = 9;
             // 
             // OpcionesLabel
             // 
@@ -227,12 +181,13 @@ namespace WoozyBot
             this.movausarLabel.BackColor = System.Drawing.Color.Transparent;
             this.movausarLabel.Depth = 0;
             this.movausarLabel.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.movausarLabel.Location = new System.Drawing.Point(25, 28);
+            this.movausarLabel.Location = new System.Drawing.Point(60, 16);
             this.movausarLabel.MouseState = MaterialSkin.MouseState.HOVER;
             this.movausarLabel.Name = "movausarLabel";
             this.movausarLabel.Size = new System.Drawing.Size(92, 19);
             this.movausarLabel.TabIndex = 11;
             this.movausarLabel.Text = "Movs. a usar";
+            this.movausarLabel.Click += new System.EventHandler(this.movausarLabel_Click);
             // 
             // defaultRadio
             // 
@@ -295,7 +250,7 @@ namespace WoozyBot
             this.groupBoxMove2.Location = new System.Drawing.Point(-4, 0);
             this.groupBoxMove2.MouseState = MaterialSkin.MouseState.HOVER;
             this.groupBoxMove2.Name = "groupBoxMove2";
-            this.groupBoxMove2.Size = new System.Drawing.Size(272, 167);
+            this.groupBoxMove2.Size = new System.Drawing.Size(239, 167);
             this.groupBoxMove2.Striped = false;
             this.groupBoxMove2.StripeDarkColor = System.Drawing.Color.Empty;
             this.groupBoxMove2.TabIndex = 15;
@@ -314,7 +269,7 @@ namespace WoozyBot
             this.materialTabControl1.Multiline = true;
             this.materialTabControl1.Name = "materialTabControl1";
             this.materialTabControl1.SelectedIndex = 0;
-            this.materialTabControl1.Size = new System.Drawing.Size(331, 343);
+            this.materialTabControl1.Size = new System.Drawing.Size(300, 343);
             this.materialTabControl1.TabIndex = 16;
             // 
             // Player
@@ -328,7 +283,7 @@ namespace WoozyBot
             this.Player.Location = new System.Drawing.Point(4, 42);
             this.Player.Name = "Player";
             this.Player.Padding = new System.Windows.Forms.Padding(3);
-            this.Player.Size = new System.Drawing.Size(323, 297);
+            this.Player.Size = new System.Drawing.Size(292, 297);
             this.Player.TabIndex = 0;
             this.Player.Text = "Player";
             this.Player.UseVisualStyleBackColor = true;
@@ -337,15 +292,26 @@ namespace WoozyBot
             // Moves
             // 
             this.Moves.Controls.Add(this.materialCheckedListBox2);
-            this.Moves.Controls.Add(this.movausarLabel);
             this.Moves.ImageKey = "settings.png";
             this.Moves.Location = new System.Drawing.Point(4, 42);
             this.Moves.Name = "Moves";
             this.Moves.Padding = new System.Windows.Forms.Padding(3);
-            this.Moves.Size = new System.Drawing.Size(323, 297);
+            this.Moves.Size = new System.Drawing.Size(292, 297);
             this.Moves.TabIndex = 1;
             this.Moves.Text = "Settings";
             this.Moves.UseVisualStyleBackColor = true;
+            // 
+            // Info
+            // 
+            this.Info.Controls.Add(inFoText);
+            this.Info.ImageKey = "information.png";
+            this.Info.Location = new System.Drawing.Point(4, 42);
+            this.Info.Name = "Info";
+            this.Info.Padding = new System.Windows.Forms.Padding(3);
+            this.Info.Size = new System.Drawing.Size(292, 297);
+            this.Info.TabIndex = 2;
+            this.Info.Text = "Info";
+            this.Info.UseVisualStyleBackColor = true;
             // 
             // imageList1
             // 
@@ -357,38 +323,104 @@ namespace WoozyBot
             this.imageList1.Images.SetKeyName(3, "user_16px.png");
             this.imageList1.Images.SetKeyName(4, "information.png");
             // 
-            // Info
+            // move3
             // 
-            this.Info.Controls.Add(inFoText);
-            this.Info.ImageKey = "information.png";
-            this.Info.Location = new System.Drawing.Point(4, 42);
-            this.Info.Name = "Info";
-            this.Info.Padding = new System.Windows.Forms.Padding(3);
-            this.Info.Size = new System.Drawing.Size(323, 297);
-            this.Info.TabIndex = 2;
-            this.Info.Text = "Info";
-            this.Info.UseVisualStyleBackColor = true;
+            this.move3.AutoSize = true;
+            this.move3.Depth = 0;
+            this.move3.Location = new System.Drawing.Point(40, 109);
+            this.move3.Margin = new System.Windows.Forms.Padding(0);
+            this.move3.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.move3.MouseState = MaterialSkin.MouseState.HOVER;
+            this.move3.Name = "move3";
+            this.move3.Ripple = true;
+            this.move3.Size = new System.Drawing.Size(132, 37);
+            this.move3.TabIndex = 7;
+            this.move3.Text = "Movimiento 3";
+            this.move3.UseVisualStyleBackColor = true;
             // 
-            // inFoText
+            // move2
             // 
-            inFoText.Depth = 0;
-            inFoText.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            inFoText.Font = new System.Drawing.Font("Roboto Condensed", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            inFoText.Location = new System.Drawing.Point(8, 14);
-            inFoText.MouseState = MaterialSkin.MouseState.HOVER;
-            inFoText.Name = "inFoText";
-            inFoText.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            inFoText.Size = new System.Drawing.Size(261, 138);
-            inFoText.TabIndex = 1;
-            inFoText.Text = "Para que el BOT funcione correctamente tienes que aplicar la siguiente configurac" +
-    "ión:\n\nResolución: 1280x720\nModo: Ventana completa sin bordes (windowed mode)\n";
-            inFoText.Click += new System.EventHandler(this.materialLabel1_Click_2);
+            this.move2.AutoSize = true;
+            this.move2.Depth = 0;
+            this.move2.Location = new System.Drawing.Point(40, 72);
+            this.move2.Margin = new System.Windows.Forms.Padding(0);
+            this.move2.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.move2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.move2.Name = "move2";
+            this.move2.Ripple = true;
+            this.move2.Size = new System.Drawing.Size(132, 37);
+            this.move2.TabIndex = 6;
+            this.move2.Text = "Movimiento 2";
+            this.move2.UseVisualStyleBackColor = true;
+            this.move2.CheckedChanged += new System.EventHandler(this.move2_CheckedChanged);
+            // 
+            // move4
+            // 
+            this.move4.AutoSize = true;
+            this.move4.Depth = 0;
+            this.move4.Location = new System.Drawing.Point(40, 146);
+            this.move4.Margin = new System.Windows.Forms.Padding(0);
+            this.move4.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.move4.MouseState = MaterialSkin.MouseState.HOVER;
+            this.move4.Name = "move4";
+            this.move4.Ripple = true;
+            this.move4.Size = new System.Drawing.Size(132, 37);
+            this.move4.TabIndex = 8;
+            this.move4.Text = "Movimiento 4";
+            this.move4.UseVisualStyleBackColor = true;
+            // 
+            // materialCheckedListBox2
+            // 
+            this.materialCheckedListBox2.AutoScroll = true;
+            this.materialCheckedListBox2.BackColor = System.Drawing.SystemColors.Control;
+            this.materialCheckedListBox2.Controls.Add(this.resolutionCombo);
+            this.materialCheckedListBox2.Controls.Add(this.materialLabel1);
+            this.materialCheckedListBox2.Controls.Add(this.move1);
+            this.materialCheckedListBox2.Controls.Add(this.movausarLabel);
+            this.materialCheckedListBox2.Controls.Add(this.move4);
+            this.materialCheckedListBox2.Controls.Add(this.move2);
+            this.materialCheckedListBox2.Controls.Add(this.move3);
+            this.materialCheckedListBox2.Depth = 0;
+            this.materialCheckedListBox2.Location = new System.Drawing.Point(-4, -5);
+            this.materialCheckedListBox2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialCheckedListBox2.Name = "materialCheckedListBox2";
+            this.materialCheckedListBox2.Size = new System.Drawing.Size(331, 306);
+            this.materialCheckedListBox2.Striped = false;
+            this.materialCheckedListBox2.StripeDarkColor = System.Drawing.Color.Empty;
+            this.materialCheckedListBox2.TabIndex = 9;
+            // 
+            // materialLabel1
+            // 
+            this.materialLabel1.AutoSize = true;
+            this.materialLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.materialLabel1.Depth = 0;
+            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel1.Location = new System.Drawing.Point(43, 197);
+            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel1.Name = "materialLabel1";
+            this.materialLabel1.Size = new System.Drawing.Size(147, 19);
+            this.materialLabel1.TabIndex = 13;
+            this.materialLabel1.Text = "Resolución del juego";
+            this.materialLabel1.Click += new System.EventHandler(this.materialLabel1_Click_3);
+            // 
+            // resolutionCombo
+            // 
+            this.resolutionCombo.DisplayMember = "resolution";
+            this.resolutionCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.resolutionCombo.FormattingEnabled = true;
+            this.resolutionCombo.Items.AddRange(new object[] {
+            "1920x1080"});
+            this.resolutionCombo.Location = new System.Drawing.Point(40, 219);
+            this.resolutionCombo.Name = "resolutionCombo";
+            this.resolutionCombo.Size = new System.Drawing.Size(150, 21);
+            this.resolutionCombo.TabIndex = 14;
+            this.resolutionCombo.ValueMember = "resolution";
             // 
             // WoozyBot
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(331, 343);
+            this.ClientSize = new System.Drawing.Size(300, 343);
             this.Controls.Add(this.materialTabControl1);
             this.DrawerHighlightWithAccent = false;
             this.DrawerShowIconsWhenHidden = true;
@@ -403,16 +435,15 @@ namespace WoozyBot
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "WoozyBot (Beta)";
             this.Load += new System.EventHandler(this.WoozyBot_Load);
-            this.materialCheckedListBox2.ResumeLayout(false);
-            this.materialCheckedListBox2.PerformLayout();
             this.groupBoxMove2.ResumeLayout(false);
             this.groupBoxMove2.PerformLayout();
             this.materialTabControl1.ResumeLayout(false);
             this.Player.ResumeLayout(false);
             this.Player.PerformLayout();
             this.Moves.ResumeLayout(false);
-            this.Moves.PerformLayout();
             this.Info.ResumeLayout(false);
+            this.materialCheckedListBox2.ResumeLayout(false);
+            this.materialCheckedListBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -422,11 +453,7 @@ namespace WoozyBot
         private MaterialSkin.Controls.MaterialButton StartButton;
         private MaterialSkin.Controls.MaterialButton StopButton;
         private MaterialSkin.Controls.MaterialCheckbox AlwaysRun;
-        private MaterialSkin.Controls.MaterialCheckbox move2;
         private MaterialSkin.Controls.MaterialCheckbox move1;
-        private MaterialSkin.Controls.MaterialCheckbox move3;
-        private MaterialSkin.Controls.MaterialCheckbox move4;
-        private MaterialSkin.Controls.MaterialCheckedListBox materialCheckedListBox2;
         private MaterialSkin.Controls.MaterialLabel OpcionesLabel;
         private MaterialSkin.Controls.MaterialLabel movausarLabel;
         private MaterialSkin.Controls.MaterialRadioButton updownRadio;
@@ -438,6 +465,12 @@ namespace WoozyBot
         private System.Windows.Forms.TabPage Moves;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.TabPage Info;
+        private MaterialSkin.Controls.MaterialCheckbox move4;
+        private MaterialSkin.Controls.MaterialCheckbox move2;
+        private MaterialSkin.Controls.MaterialCheckbox move3;
+        private MaterialSkin.Controls.MaterialCheckedListBox materialCheckedListBox2;
+        private MaterialSkin.Controls.MaterialLabel materialLabel1;
+        private System.Windows.Forms.ComboBox resolutionCombo;
     }
 }
 

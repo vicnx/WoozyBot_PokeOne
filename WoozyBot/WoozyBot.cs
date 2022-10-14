@@ -22,6 +22,7 @@ namespace WoozyBot
         AutoItX3 au3 = new AutoItX3();
         public object[] pixCoord;
         public int PokeOneWindowX, PokeOneWindowY;
+        public int resolutionX, resolutionY;
 
         public WoozyBot()
         {
@@ -36,6 +37,7 @@ namespace WoozyBot
         private void WoozyBot_Load(object sender, EventArgs e)
         {
             backgroundWorker1.WorkerSupportsCancellation = true;
+            resolutionCombo.SelectedItem = "1920x1080";
         }
         public void Start()
         {
@@ -47,6 +49,7 @@ namespace WoozyBot
                     StartButton.Enabled = false;
                     StopButton.Enabled = true;
                     getGamePosition();
+                    getGetResolutionGame();
                     au3.WinActivate("PokeOne"); //Se situa sobre el juego
                 }
             }
@@ -121,31 +124,38 @@ namespace WoozyBot
             Random r = new Random();
             //Refrescamos la posicion del juego para evitar errores
             getGamePosition();
-            au3.MouseClick("LEFT", PokeOneWindowX + 691, PokeOneWindowY + 616, 1, 2);
+            //1080x720
+            //au3.MouseClick("LEFT", PokeOneWindowX + 691, PokeOneWindowY + 616, 1, 2);
+            au3.MouseClick("LEFT", PokeOneWindowX + 993, PokeOneWindowY + 976, 1, 2);
             Thread.Sleep(500);
             if (move1.Checked)
             //if (detectarPixel(0x828282, 745, 873,1920,1080) == false && move1.Checked)
             {
                 Thread.Sleep(r.Next(50, 70));
-                au3.MouseClick("LEFT", PokeOneWindowX + 595, PokeOneWindowY + 553, 1, 2);//Move 1
+                //1080x720
+                //au3.MouseClick("LEFT", PokeOneWindowX + 595, PokeOneWindowY + 553, 1, 2);//Move 1
+                au3.MouseClick("LEFT", PokeOneWindowX + 884, PokeOneWindowY + 889, 1, 2);//Move 1
             }
             else if (move2.Checked)
             //else if (detectarPixel(0x828282, 1160, 870,1920,1080) == false && move2.Checked)
             {
                 Thread.Sleep(r.Next(50, 70));
 
-                au3.MouseClick("LEFT", PokeOneWindowX + 806, PokeOneWindowY + 553, 1, 2);//Move 2
+                au3.MouseClick("LEFT", PokeOneWindowX + 1129, PokeOneWindowY + 889, 1, 2);//Move 2
+                //1080x720//au3.MouseClick("LEFT", PokeOneWindowX + 806, PokeOneWindowY + 553, 1, 2);//Move 2
             }
             //else if (detectarPixel(0x828282, 752, 953,1920,1080) == false && move3.Checked)
             else if (move3.Checked)
             {
                 Thread.Sleep(r.Next(50, 70));
-                au3.MouseClick("LEFT", PokeOneWindowX + 574, PokeOneWindowY + 618, 1, 2);//Move 3
+                au3.MouseClick("LEFT", PokeOneWindowX + 898, PokeOneWindowY + 982, 1, 2);//Move 3
+                //1080x720//au3.MouseClick("LEFT", PokeOneWindowX + 574, PokeOneWindowY + 618, 1, 2);//Move 3
             }
             else if (move4.Checked)
             {
                 Thread.Sleep(r.Next(50,70));
-                au3.MouseClick("LEFT", PokeOneWindowX + 824, PokeOneWindowY + 618, 1, 2);//Move 4
+                au3.MouseClick("LEFT", PokeOneWindowX + 1121, PokeOneWindowY + 982, 1, 2);//Move 4
+                //1080x720//au3.MouseClick("LEFT", PokeOneWindowX + 824, PokeOneWindowY + 618, 1, 2);//Move 4
             }
         }
 
@@ -185,8 +195,7 @@ namespace WoozyBot
         {
             //Refrescamos la posicion del juego para evitar errores
             getGamePosition();
-            //Ahora el juego tiene que estar en 1280 y 720 windowed mode para que funcione relativo
-            Object pix = au3.PixelSearch(xcima, ycima, PokeOneWindowX + 1280, PokeOneWindowY +720, pixel);
+            Object pix = au3.PixelSearch(xcima, ycima, PokeOneWindowX + resolutionX, PokeOneWindowY + resolutionY, pixel);
             if (pix.ToString() != "1")
             {
                 try
@@ -208,6 +217,14 @@ namespace WoozyBot
         {
             PokeOneWindowX = au3.WinGetPosX("PokeOne");
             PokeOneWindowY = au3.WinGetPosY("PokeOne");
+        }
+
+        void getGetResolutionGame()
+        {
+            string resSel = resolutionCombo.SelectedItem.ToString();
+            string[] resSplit = resSel.Split('x');
+            resolutionX = Int32.Parse(resSplit[0]);
+            resolutionY = Int32.Parse(resSplit[1]);
         }
 
         bool checkGameOpen()
@@ -243,6 +260,16 @@ namespace WoozyBot
         }
 
         private void materialLabel1_Click_2(object sender, EventArgs e)
+        {
+
+        }
+
+        private void movausarLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialLabel1_Click_3(object sender, EventArgs e)
         {
 
         }
