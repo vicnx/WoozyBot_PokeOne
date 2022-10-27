@@ -129,6 +129,11 @@
   <metadata name="materialLabel4.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
+  <data name="materialLabel4.Text" xml:space="preserve">
+    <value>El pokemon con el que vas a luchas no puede ser shiny. Puedes entrar al combate con un pokemon shiny pero tendrás que habilitar la opción de cambiar pokemon para que lo intercambie a la hora de luichar por uno no shiny.
+
+</value>
+  </data>
   <metadata name="backgroundWorker1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>

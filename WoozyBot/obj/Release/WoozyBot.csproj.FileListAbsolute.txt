@@ -1,0 +1,15 @@
+D:\vicen\Documents\Proyectos\Windows\WoozyBot_PokeOne\WoozyBot\bin\Release\WoozyBot.exe.config
+D:\vicen\Documents\Proyectos\Windows\WoozyBot_PokeOne\WoozyBot\bin\Release\WoozyBot.exe
+D:\vicen\Documents\Proyectos\Windows\WoozyBot_PokeOne\WoozyBot\bin\Release\WoozyBot.pdb
+D:\vicen\Documents\Proyectos\Windows\WoozyBot_PokeOne\WoozyBot\bin\Release\MaterialSkin.dll
+D:\vicen\Documents\Proyectos\Windows\WoozyBot_PokeOne\WoozyBot\obj\Release\WoozyBot.csproj.AssemblyReference.cache
+D:\vicen\Documents\Proyectos\Windows\WoozyBot_PokeOne\WoozyBot\obj\Release\WoozyBot.csproj.SuggestedBindingRedirects.cache
+D:\vicen\Documents\Proyectos\Windows\WoozyBot_PokeOne\WoozyBot\obj\Release\Interop.AutoItX3Lib.dll
+D:\vicen\Documents\Proyectos\Windows\WoozyBot_PokeOne\WoozyBot\obj\Release\WoozyBot.csproj.ResolveComReference.cache
+D:\vicen\Documents\Proyectos\Windows\WoozyBot_PokeOne\WoozyBot\obj\Release\WoozyBot.WoozyBot.resources
+D:\vicen\Documents\Proyectos\Windows\WoozyBot_PokeOne\WoozyBot\obj\Release\WoozyBot.Properties.Resources.resources
+D:\vicen\Documents\Proyectos\Windows\WoozyBot_PokeOne\WoozyBot\obj\Release\WoozyBot.csproj.GenerateResource.cache
+D:\vicen\Documents\Proyectos\Windows\WoozyBot_PokeOne\WoozyBot\obj\Release\WoozyBot.csproj.CoreCompileInputs.cache
+D:\vicen\Documents\Proyectos\Windows\WoozyBot_PokeOne\WoozyBot\obj\Release\WoozyBot.csproj.CopyComplete
+D:\vicen\Documents\Proyectos\Windows\WoozyBot_PokeOne\WoozyBot\obj\Release\WoozyBot.exe
+D:\vicen\Documents\Proyectos\Windows\WoozyBot_PokeOne\WoozyBot\obj\Release\WoozyBot.pdb

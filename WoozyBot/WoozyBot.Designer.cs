@@ -144,9 +144,9 @@ namespace WoozyBot
             materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel4.Name = "materialLabel4";
             materialLabel4.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            materialLabel4.Size = new System.Drawing.Size(226, 20);
+            materialLabel4.Size = new System.Drawing.Size(246, 79);
             materialLabel4.TabIndex = 5;
-            materialLabel4.Text = "No debes estar utilizando shiny para que funcione.";
+            materialLabel4.Text = resources.GetString("materialLabel4.Text");
             materialLabel4.UseAccent = true;
             // 
             // backgroundWorker1

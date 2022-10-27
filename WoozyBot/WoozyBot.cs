@@ -65,6 +65,7 @@ namespace WoozyBot
         }
         public void Stop()
         {
+            MessageBox.Show("Si estas en medio de un combate el BOT parará al finalizar.");
             if (backgroundWorker1.IsBusy != false)
             {
                 backgroundWorker1.CancelAsync();
@@ -79,10 +80,6 @@ namespace WoozyBot
                         panicButton.Enabled = false;
                     }));
                 }
-            }
-            else
-            {
-                MessageBox.Show("Termina la batalla.");
             }
         }
         private void StartButton_Click(object sender, EventArgs e)
@@ -100,21 +97,18 @@ namespace WoozyBot
 
             Random r = new Random();
             BackgroundWorker worker = sender as BackgroundWorker;
-            while (checkGameOpen())//mientras el juego este abierto
+            while (checkGameOpen())
             {
                 if (worker.CancellationPending == true)
                 {
                     e.Cancel = true;
                     break;
                 }
-                
-                movePlayer();
-
-                //Mientras este en una batalla
                 iniciobatalla = true;
-                while (PixelDetect(0x9CE799, 42, 45) == true || PixelDetect(0x69A226, 1094, 1041))//HP rival 
+                movePlayer();
+                while (PixelDetect(0x9CE799, 30, 40) == true || PixelDetect(0x69A226, 1094, 1041))
                 {
-                    if (PixelDetect(0xAA2826, 912, 975) == true || PixelDetect(0x69A226, 1094, 1041)) // Boton atacar rojo o huir
+                    if (PixelDetect(0xAA2826, 912, 975) == true || PixelDetect(0x69A226, 1094, 1041)) // Boton atacar o huir
                     {
                         if (iniciobatalla == true)
                         {
@@ -124,7 +118,10 @@ namespace WoozyBot
                             }
                             iniciobatalla = false;
                         }
-                        combate();
+                        else
+                        {
+                            combate();
+                        }
                     }
 
                 }
@@ -144,6 +141,9 @@ namespace WoozyBot
             if (shinyCheck())
             {
                 MessageBox.Show("SHINY");
+                MessageBox.Show("SHINY2");
+                MessageBox.Show("SHINY3");
+                MessageBox.Show("SHINY4");
                 Stop();
             }
             else
@@ -278,10 +278,11 @@ namespace WoozyBot
         void changePokemon()
         {
             au3.MouseClick("LEFT", PokeOneWindowX + 840, PokeOneWindowY + 1041, 1, 2);
-            Thread.Sleep(500);
+            Thread.Sleep(300);
             if (PokemonPos == "Segundo")
             {
                 au3.MouseClick("LEFT", PokeOneWindowX + 971, PokeOneWindowY + 395, 1, 2);
+
             }
         }
         
@@ -295,7 +296,6 @@ namespace WoozyBot
                     try
                     {
                         pixCoord = (object[])pix;
-                        MessageBox.Show(pixCoord.ToString());
                         return true;
                     }
                     catch
