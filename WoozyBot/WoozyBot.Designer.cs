@@ -34,6 +34,7 @@ namespace WoozyBot
             MaterialSkin.Controls.MaterialLabel inFoText;
             MaterialSkin.Controls.MaterialLabel materialLabel2;
             MaterialSkin.Controls.MaterialLabel materialLabel3;
+            MaterialSkin.Controls.MaterialLabel materialLabel4;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WoozyBot));
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
@@ -58,11 +59,13 @@ namespace WoozyBot
             this.OpcionesLabel = new MaterialSkin.Controls.MaterialLabel();
             this.materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
             this.Pokemon = new System.Windows.Forms.TabPage();
+            this.shinycheckbox = new MaterialSkin.Controls.MaterialCheckbox();
             this.changePKMCombo = new System.Windows.Forms.ComboBox();
             this.changePKM = new MaterialSkin.Controls.MaterialCheckbox();
             inFoText = new MaterialSkin.Controls.MaterialLabel();
             materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
+            materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
             this.Info.SuspendLayout();
             this.Moves.SuspendLayout();
             this.materialCheckedListBox2.SuspendLayout();
@@ -126,6 +129,24 @@ namespace WoozyBot
             materialLabel3.Text = "Coming soon...\r\n";
             materialLabel3.UseAccent = true;
             materialLabel3.Click += new System.EventHandler(this.materialLabel1_Click_3);
+            // 
+            // materialLabel4
+            // 
+            materialLabel4.BackColor = System.Drawing.Color.Red;
+            materialLabel4.Depth = 0;
+            materialLabel4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            materialLabel4.Font = new System.Drawing.Font("Roboto", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            materialLabel4.FontType = MaterialSkin.MaterialSkinManager.fontType.Overline;
+            materialLabel4.ForeColor = System.Drawing.SystemColors.ControlDark;
+            materialLabel4.HighEmphasis = true;
+            materialLabel4.Location = new System.Drawing.Point(8, 116);
+            materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabel4.Name = "materialLabel4";
+            materialLabel4.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            materialLabel4.Size = new System.Drawing.Size(226, 20);
+            materialLabel4.TabIndex = 5;
+            materialLabel4.Text = "No debes estar utilizando shiny para que funcione.";
+            materialLabel4.UseAccent = true;
             // 
             // backgroundWorker1
             // 
@@ -469,6 +490,8 @@ namespace WoozyBot
             // 
             // Pokemon
             // 
+            this.Pokemon.Controls.Add(materialLabel4);
+            this.Pokemon.Controls.Add(this.shinycheckbox);
             this.Pokemon.Controls.Add(materialLabel3);
             this.Pokemon.Controls.Add(this.changePKMCombo);
             this.Pokemon.Controls.Add(this.changePKM);
@@ -480,6 +503,22 @@ namespace WoozyBot
             this.Pokemon.TabIndex = 3;
             this.Pokemon.Text = "Pokemon";
             this.Pokemon.UseVisualStyleBackColor = true;
+            // 
+            // shinycheckbox
+            // 
+            this.shinycheckbox.AutoSize = true;
+            this.shinycheckbox.Cursor = System.Windows.Forms.Cursors.Default;
+            this.shinycheckbox.Depth = 0;
+            this.shinycheckbox.Location = new System.Drawing.Point(5, 79);
+            this.shinycheckbox.Margin = new System.Windows.Forms.Padding(0);
+            this.shinycheckbox.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.shinycheckbox.MouseState = MaterialSkin.MouseState.HOVER;
+            this.shinycheckbox.Name = "shinycheckbox";
+            this.shinycheckbox.Ripple = true;
+            this.shinycheckbox.Size = new System.Drawing.Size(122, 37);
+            this.shinycheckbox.TabIndex = 4;
+            this.shinycheckbox.Text = "Shiny Check";
+            this.shinycheckbox.UseVisualStyleBackColor = true;
             // 
             // changePKMCombo
             // 
@@ -525,6 +564,7 @@ namespace WoozyBot
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.SystemColors.Control;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "WoozyBot";
             this.ShowIcon = false;
@@ -532,6 +572,7 @@ namespace WoozyBot
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "WoozyBot (Beta)";
             this.Load += new System.EventHandler(this.WoozyBot_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeypressForm);
             this.Info.ResumeLayout(false);
             this.Moves.ResumeLayout(false);
             this.materialCheckedListBox2.ResumeLayout(false);
@@ -572,6 +613,7 @@ namespace WoozyBot
         private System.Windows.Forms.TabPage Pokemon;
         private MaterialSkin.Controls.MaterialCheckbox changePKM;
         private System.Windows.Forms.ComboBox changePKMCombo;
+        private MaterialSkin.Controls.MaterialCheckbox shinycheckbox;
     }
 }
 

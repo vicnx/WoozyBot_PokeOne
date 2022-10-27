@@ -12,6 +12,7 @@ using MaterialSkin.Controls;
 using AutoItX3Lib;
 using System.Threading;
 using System.Diagnostics;
+using System.Drawing.Imaging;
 
 namespace WoozyBot
 {
@@ -94,12 +95,14 @@ namespace WoozyBot
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
+
             Random r = new Random();
             BackgroundWorker worker = sender as BackgroundWorker;
             while (checkGameOpen())//mientras el juego este abierto
             {
                 if (worker.CancellationPending == true)
                 {
+                    e.Cancel = true;
                     break;
                 }
                 
@@ -120,7 +123,7 @@ namespace WoozyBot
                             }
                             iniciobatalla = false;
                         }
-                        if (PixelDetect(0x512F00, 0, 0) == true) //NOT WORKING NOW
+                        if (shinyCheck())
                         {
                             MessageBox.Show("SHINY");
                             break;
@@ -274,6 +277,36 @@ namespace WoozyBot
                 au3.MouseClick("LEFT", PokeOneWindowX + 971, PokeOneWindowY + 395, 1, 2);
             }
         }
+        
+        bool shinyCheck()
+        {
+            if (shinycheckbox.Checked)
+            {
+                object pix = au3.PixelSearch(0, 0, 1920, 1080, 0x512F00);
+                if (pix.ToString() != "1")
+                {
+                    try
+                    {
+                        pixCoord = (object[])pix;
+                        MessageBox.Show(pixCoord.ToString());
+                        return true;
+                    }
+                    catch
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+
+        }
 
         private void move2_CheckedChanged(object sender, EventArgs e)
         {
@@ -289,6 +322,14 @@ namespace WoozyBot
             else
             {
                 changePKMCombo.Enabled = false;
+            }
+        }
+
+        private void KeypressForm(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                Application.Exit();
             }
         }
 
