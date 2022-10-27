@@ -11,8 +11,7 @@ using MaterialSkin;
 using MaterialSkin.Controls;
 using AutoItX3Lib;
 using System.Threading;
-
-
+using System.Diagnostics;
 
 namespace WoozyBot
 {
@@ -23,6 +22,8 @@ namespace WoozyBot
         public object[] pixCoord;
         public int PokeOneWindowX, PokeOneWindowY;
         public int resolutionX, resolutionY;
+        public Boolean iniciobatalla;
+        public string PokemonPos;
 
         public WoozyBot()
         {
@@ -51,6 +52,7 @@ namespace WoozyBot
                     StopButton.Enabled = true;
                     getGamePosition();
                     getGetResolutionGame();
+                    PokemonPos = changePKMCombo.SelectedItem.ToString();
                     au3.WinActivate("PokeOne"); //Se situa sobre el juego
                 }
             }
@@ -75,6 +77,10 @@ namespace WoozyBot
                     }));
                 }
             }
+            else
+            {
+                MessageBox.Show("Termina la batalla.");
+            }
         }
         private void StartButton_Click(object sender, EventArgs e)
         {
@@ -88,6 +94,7 @@ namespace WoozyBot
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
+            Random r = new Random();
             BackgroundWorker worker = sender as BackgroundWorker;
             while (checkGameOpen())//mientras el juego este abierto
             {
@@ -95,30 +102,48 @@ namespace WoozyBot
                 {
                     break;
                 }
-
+                
                 movePlayer();
 
                 //Mientras este en una batalla
-                while (PixelDetect(0x568A1F, 864, 684) == true)
+                iniciobatalla = true;
+                while (PixelDetect(0xBD9426, 243, 19) == true)//Level amarillo arriba
                 {
-                    if (PixelDetect(0x512F00, 0, 0) == true) //NOT WORKING NOW
+                    Thread.Sleep(r.Next(500, 600));
+                    if (PixelDetect(0xAA2826, 1009, 976) == true) // Boton atacar rojo
                     {
-                        MessageBox.Show("SHINY");
-                        break;
-                    }
-                    else
-                    {
-                        if (!AlwaysRun.Checked)
+                        if (iniciobatalla == true)
                         {
-                            atacar();
+                            if (changePKM.Checked)
+                            {
+                                changePokemon();
+                            }
+                            iniciobatalla = false;
+                        }
+                        if (PixelDetect(0x512F00, 0, 0) == true) //NOT WORKING NOW
+                        {
+                            MessageBox.Show("SHINY");
+                            break;
+                        }
+                        else
+                        {
+                            if (!AlwaysRun.Checked)
+                            {
+                                Thread.Sleep(500);
+                                atacar();
+                            }
                         }
                     }
                 }
             }
-
-            //Si se cierra el juego se sale del loop y se ejecuta lo siguiente
-            MessageBox.Show("Has cerrado el juego, abrelo para continuar.");
-            Stop();
+            if (checkGameOpen())
+            {
+                Stop();
+            }
+            else
+            {
+                MessageBox.Show("Has cerrado el juego, abrelo para continuar.");
+            }
         }
         void atacar()
         {
@@ -128,7 +153,7 @@ namespace WoozyBot
             //1080x720
             //au3.MouseClick("LEFT", PokeOneWindowX + 691, PokeOneWindowY + 616, 1, 2);
             au3.MouseClick("LEFT", PokeOneWindowX + 993, PokeOneWindowY + 976, 1, 2);
-            Thread.Sleep(500);
+            Thread.Sleep(r.Next(500, 600));
             if (move1.Checked)
             //if (detectarPixel(0x828282, 745, 873,1920,1080) == false && move1.Checked)
             {
@@ -137,7 +162,8 @@ namespace WoozyBot
                 //au3.MouseClick("LEFT", PokeOneWindowX + 595, PokeOneWindowY + 553, 1, 2);//Move 1
                 au3.MouseClick("LEFT", PokeOneWindowX + 884, PokeOneWindowY + 889, 1, 2);//Move 1
             }
-            else if (move2.Checked)
+            Thread.Sleep(r.Next(500, 600));
+            if (move2.Checked)
             //else if (detectarPixel(0x828282, 1160, 870,1920,1080) == false && move2.Checked)
             {
                 Thread.Sleep(r.Next(50, 70));
@@ -145,14 +171,16 @@ namespace WoozyBot
                 au3.MouseClick("LEFT", PokeOneWindowX + 1129, PokeOneWindowY + 889, 1, 2);//Move 2
                 //1080x720//au3.MouseClick("LEFT", PokeOneWindowX + 806, PokeOneWindowY + 553, 1, 2);//Move 2
             }
+            Thread.Sleep(r.Next(500, 600));
             //else if (detectarPixel(0x828282, 752, 953,1920,1080) == false && move3.Checked)
-            else if (move3.Checked)
+            if (move3.Checked)
             {
                 Thread.Sleep(r.Next(50, 70));
                 au3.MouseClick("LEFT", PokeOneWindowX + 898, PokeOneWindowY + 982, 1, 2);//Move 3
                 //1080x720//au3.MouseClick("LEFT", PokeOneWindowX + 574, PokeOneWindowY + 618, 1, 2);//Move 3
             }
-            else if (move4.Checked)
+            Thread.Sleep(r.Next(500, 600));
+            if (move4.Checked)
             {
                 Thread.Sleep(r.Next(50,70));
                 au3.MouseClick("LEFT", PokeOneWindowX + 1121, PokeOneWindowY + 982, 1, 2);//Move 4
@@ -235,6 +263,16 @@ namespace WoozyBot
             result = au3.WinExists("PokeOne") == 1 ? true : false;
             return result;
 
+        }
+
+        void changePokemon()
+        {
+            au3.MouseClick("LEFT", PokeOneWindowX + 840, PokeOneWindowY + 1041, 1, 2);
+            Thread.Sleep(500);
+            if (PokemonPos == "Segundo")
+            {
+                au3.MouseClick("LEFT", PokeOneWindowX + 971, PokeOneWindowY + 395, 1, 2);
+            }
         }
 
         private void move2_CheckedChanged(object sender, EventArgs e)
