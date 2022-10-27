@@ -112,9 +112,8 @@ namespace WoozyBot
 
                 //Mientras este en una batalla
                 iniciobatalla = true;
-                while (PixelDetect(0x9CE799, 42, 45) == true)//HP rival hp tuyo
+                while (PixelDetect(0x9CE799, 42, 45) == true || PixelDetect(0x69A226, 1094, 1041))//HP rival 
                 {
-                    Thread.Sleep(r.Next(500, 600));
                     if (PixelDetect(0xAA2826, 912, 975) == true || PixelDetect(0x69A226, 1094, 1041)) // Boton atacar rojo o huir
                     {
                         if (iniciobatalla == true)
@@ -125,19 +124,9 @@ namespace WoozyBot
                             }
                             iniciobatalla = false;
                         }
-                        if (shinyCheck())
-                        {
-                            MessageBox.Show("SHINY");
-                            break;
-                        }
-                        else
-                        {
-                            if (!AlwaysRun.Checked)
-                            {
-                                atacar();
-                            }
-                        }
+                        combate();
                     }
+
                 }
             }
             if (checkGameOpen())
@@ -149,6 +138,23 @@ namespace WoozyBot
                 MessageBox.Show("Has cerrado el juego, abrelo para continuar.");
             }
         }
+
+        void combate()
+        {
+            if (shinyCheck())
+            {
+                MessageBox.Show("SHINY");
+                Stop();
+            }
+            else
+            {
+                if (!AlwaysRun.Checked)
+                {
+                    atacar();
+                }
+            }
+        }
+
         void atacar()
         {
             Random r = new Random();
