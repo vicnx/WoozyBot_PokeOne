@@ -51,6 +51,7 @@ namespace WoozyBot
                     backgroundWorker1.RunWorkerAsync();
                     StartButton.Enabled = false;
                     StopButton.Enabled = true;
+                    panicButton.Enabled = true;
                     getGamePosition();
                     getGetResolutionGame();
                     PokemonPos = changePKMCombo.SelectedItem.ToString();
@@ -75,6 +76,7 @@ namespace WoozyBot
 
                         StartButton.Enabled = true;
                         StopButton.Enabled = false;
+                        panicButton.Enabled = false;
                     }));
                 }
             }
@@ -110,10 +112,10 @@ namespace WoozyBot
 
                 //Mientras este en una batalla
                 iniciobatalla = true;
-                while (PixelDetect(0xBD9426, 243, 19) == true)//Level amarillo arriba
+                while (PixelDetect(0x9CE799, 42, 45) == true)//HP rival hp tuyo
                 {
                     Thread.Sleep(r.Next(500, 600));
-                    if (PixelDetect(0xAA2826, 1009, 976) == true) // Boton atacar rojo
+                    if (PixelDetect(0xAA2826, 912, 975) == true || PixelDetect(0x69A226, 1094, 1041)) // Boton atacar rojo o huir
                     {
                         if (iniciobatalla == true)
                         {
@@ -132,7 +134,6 @@ namespace WoozyBot
                         {
                             if (!AlwaysRun.Checked)
                             {
-                                Thread.Sleep(500);
                                 atacar();
                             }
                         }
@@ -366,6 +367,11 @@ namespace WoozyBot
         private void materialLabel2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void panicButton_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
 
         private void materialLabel1_Click_3(object sender, EventArgs e)

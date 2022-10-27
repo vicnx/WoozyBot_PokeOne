@@ -62,6 +62,7 @@ namespace WoozyBot
             this.shinycheckbox = new MaterialSkin.Controls.MaterialCheckbox();
             this.changePKMCombo = new System.Windows.Forms.ComboBox();
             this.changePKM = new MaterialSkin.Controls.MaterialCheckbox();
+            this.panicButton = new MaterialSkin.Controls.MaterialButton();
             inFoText = new MaterialSkin.Controls.MaterialLabel();
             materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
@@ -315,6 +316,7 @@ namespace WoozyBot
             // Player
             // 
             this.Player.AutoScroll = true;
+            this.Player.Controls.Add(this.panicButton);
             this.Player.Controls.Add(this.StopButton);
             this.Player.Controls.Add(this.AlwaysRun);
             this.Player.Controls.Add(this.StartButton);
@@ -340,7 +342,7 @@ namespace WoozyBot
             this.StopButton.Enabled = false;
             this.StopButton.HighEmphasis = true;
             this.StopButton.Icon = null;
-            this.StopButton.Location = new System.Drawing.Point(150, 227);
+            this.StopButton.Location = new System.Drawing.Point(180, 227);
             this.StopButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.StopButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.StopButton.Name = "StopButton";
@@ -377,7 +379,7 @@ namespace WoozyBot
             this.StartButton.DrawShadows = true;
             this.StartButton.HighEmphasis = true;
             this.StartButton.Icon = null;
-            this.StartButton.Location = new System.Drawing.Point(75, 227);
+            this.StartButton.Location = new System.Drawing.Point(105, 227);
             this.StartButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.StartButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.StartButton.Name = "StartButton";
@@ -401,7 +403,7 @@ namespace WoozyBot
             this.groupBoxMove2.Location = new System.Drawing.Point(-4, 0);
             this.groupBoxMove2.MouseState = MaterialSkin.MouseState.HOVER;
             this.groupBoxMove2.Name = "groupBoxMove2";
-            this.groupBoxMove2.Size = new System.Drawing.Size(239, 167);
+            this.groupBoxMove2.Size = new System.Drawing.Size(249, 167);
             this.groupBoxMove2.Striped = false;
             this.groupBoxMove2.StripeDarkColor = System.Drawing.Color.Empty;
             this.groupBoxMove2.TabIndex = 15;
@@ -552,6 +554,29 @@ namespace WoozyBot
             this.changePKM.UseVisualStyleBackColor = true;
             this.changePKM.CheckedChanged += new System.EventHandler(this.changePKM_CheckedChanged);
             // 
+            // panicButton
+            // 
+            this.panicButton.AutoSize = false;
+            this.panicButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panicButton.BackColor = System.Drawing.Color.Transparent;
+            this.panicButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.panicButton.Depth = 0;
+            this.panicButton.DrawShadows = true;
+            this.panicButton.Enabled = false;
+            this.panicButton.HighEmphasis = true;
+            this.panicButton.Icon = null;
+            this.panicButton.Location = new System.Drawing.Point(10, 227);
+            this.panicButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.panicButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.panicButton.Name = "panicButton";
+            this.panicButton.Size = new System.Drawing.Size(67, 36);
+            this.panicButton.TabIndex = 16;
+            this.panicButton.Text = "PANIC";
+            this.panicButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.panicButton.UseAccentColor = true;
+            this.panicButton.UseVisualStyleBackColor = false;
+            this.panicButton.Click += new System.EventHandler(this.panicButton_Click);
+            // 
             // WoozyBot
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
@@ -614,6 +639,7 @@ namespace WoozyBot
         private MaterialSkin.Controls.MaterialCheckbox changePKM;
         private System.Windows.Forms.ComboBox changePKMCombo;
         private MaterialSkin.Controls.MaterialCheckbox shinycheckbox;
+        private MaterialSkin.Controls.MaterialButton panicButton;
     }
 }
 
