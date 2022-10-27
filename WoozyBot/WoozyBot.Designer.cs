@@ -33,8 +33,8 @@ namespace WoozyBot
             this.components = new System.ComponentModel.Container();
             MaterialSkin.Controls.MaterialLabel inFoText;
             MaterialSkin.Controls.MaterialLabel materialLabel2;
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WoozyBot));
             MaterialSkin.Controls.MaterialLabel materialLabel3;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WoozyBot));
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.Info = new System.Windows.Forms.TabPage();
@@ -58,8 +58,8 @@ namespace WoozyBot
             this.OpcionesLabel = new MaterialSkin.Controls.MaterialLabel();
             this.materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
             this.Pokemon = new System.Windows.Forms.TabPage();
-            this.changePKM = new MaterialSkin.Controls.MaterialCheckbox();
             this.changePKMCombo = new System.Windows.Forms.ComboBox();
+            this.changePKM = new MaterialSkin.Controls.MaterialCheckbox();
             inFoText = new MaterialSkin.Controls.MaterialLabel();
             materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
@@ -107,6 +107,25 @@ namespace WoozyBot
     "tilizar, no me hago responsable de posibles baneos/bloqueos de cuentas.";
             materialLabel2.UseAccent = true;
             materialLabel2.Click += new System.EventHandler(this.materialLabel2_Click);
+            // 
+            // materialLabel3
+            // 
+            materialLabel3.BackColor = System.Drawing.Color.Red;
+            materialLabel3.Depth = 0;
+            materialLabel3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            materialLabel3.Font = new System.Drawing.Font("Roboto", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            materialLabel3.FontType = MaterialSkin.MaterialSkinManager.fontType.Overline;
+            materialLabel3.ForeColor = System.Drawing.SystemColors.ControlDark;
+            materialLabel3.HighEmphasis = true;
+            materialLabel3.Location = new System.Drawing.Point(6, 231);
+            materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabel3.Name = "materialLabel3";
+            materialLabel3.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            materialLabel3.Size = new System.Drawing.Size(86, 20);
+            materialLabel3.TabIndex = 3;
+            materialLabel3.Text = "Coming soon...\r\n";
+            materialLabel3.UseAccent = true;
+            materialLabel3.Click += new System.EventHandler(this.materialLabel1_Click_3);
             // 
             // backgroundWorker1
             // 
@@ -462,6 +481,21 @@ namespace WoozyBot
             this.Pokemon.Text = "Pokemon";
             this.Pokemon.UseVisualStyleBackColor = true;
             // 
+            // changePKMCombo
+            // 
+            this.changePKMCombo.DisplayMember = "changePKMCombo";
+            this.changePKMCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.changePKMCombo.Enabled = false;
+            this.changePKMCombo.FormattingEnabled = true;
+            this.changePKMCombo.Items.AddRange(new object[] {
+            "Segundo",
+            "Tercero"});
+            this.changePKMCombo.Location = new System.Drawing.Point(8, 43);
+            this.changePKMCombo.Name = "changePKMCombo";
+            this.changePKMCombo.Size = new System.Drawing.Size(163, 21);
+            this.changePKMCombo.TabIndex = 1;
+            this.changePKMCombo.ValueMember = "changePKMCombo";
+            // 
             // changePKM
             // 
             this.changePKM.AutoSize = true;
@@ -478,40 +512,6 @@ namespace WoozyBot
             this.changePKM.Text = "Cambiar Pokemon";
             this.changePKM.UseVisualStyleBackColor = true;
             this.changePKM.CheckedChanged += new System.EventHandler(this.changePKM_CheckedChanged);
-            // 
-            // changePKMCombo
-            // 
-            this.changePKMCombo.DisplayMember = "changePKMCombo";
-            this.changePKMCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.changePKMCombo.Enabled = false;
-            this.changePKMCombo.FormattingEnabled = true;
-            this.changePKMCombo.Items.AddRange(new object[] {
-            "Segundo",
-            "Tercero"});
-            this.changePKMCombo.Location = new System.Drawing.Point(8, 43);
-            this.changePKMCombo.Name = "changePKMCombo";
-            this.changePKMCombo.Size = new System.Drawing.Size(163, 21);
-            this.changePKMCombo.TabIndex = 1;
-            this.changePKMCombo.ValueMember = "changePKMCombo";
-            // 
-            // materialLabel3
-            // 
-            materialLabel3.BackColor = System.Drawing.Color.Red;
-            materialLabel3.Depth = 0;
-            materialLabel3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            materialLabel3.Font = new System.Drawing.Font("Roboto", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            materialLabel3.FontType = MaterialSkin.MaterialSkinManager.fontType.Overline;
-            materialLabel3.ForeColor = System.Drawing.SystemColors.ControlDark;
-            materialLabel3.HighEmphasis = true;
-            materialLabel3.Location = new System.Drawing.Point(9, 69);
-            materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
-            materialLabel3.Name = "materialLabel3";
-            materialLabel3.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            materialLabel3.Size = new System.Drawing.Size(86, 20);
-            materialLabel3.TabIndex = 3;
-            materialLabel3.Text = "Coming soon...\r\n";
-            materialLabel3.UseAccent = true;
-            materialLabel3.Click += new System.EventHandler(this.materialLabel1_Click_3);
             // 
             // WoozyBot
             // 
