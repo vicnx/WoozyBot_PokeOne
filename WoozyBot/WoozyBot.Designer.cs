@@ -529,8 +529,7 @@ namespace WoozyBot
             this.changePKMCombo.Enabled = false;
             this.changePKMCombo.FormattingEnabled = true;
             this.changePKMCombo.Items.AddRange(new object[] {
-            "Segundo",
-            "Tercero"});
+            "Segundo"});
             this.changePKMCombo.Location = new System.Drawing.Point(8, 43);
             this.changePKMCombo.Name = "changePKMCombo";
             this.changePKMCombo.Size = new System.Drawing.Size(163, 21);
