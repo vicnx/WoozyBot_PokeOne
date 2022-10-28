@@ -49,10 +49,12 @@ namespace WoozyBot
             this.move2 = new MaterialSkin.Controls.MaterialCheckbox();
             this.move3 = new MaterialSkin.Controls.MaterialCheckbox();
             this.Player = new System.Windows.Forms.TabPage();
+            this.panicButton = new MaterialSkin.Controls.MaterialButton();
             this.StopButton = new MaterialSkin.Controls.MaterialButton();
             this.AlwaysRun = new MaterialSkin.Controls.MaterialCheckbox();
             this.StartButton = new MaterialSkin.Controls.MaterialButton();
             this.groupBoxMove2 = new MaterialSkin.Controls.MaterialCheckedListBox();
+            this.fishModeRadio = new MaterialSkin.Controls.MaterialRadioButton();
             this.randomRadio = new MaterialSkin.Controls.MaterialRadioButton();
             this.updownRadio = new MaterialSkin.Controls.MaterialRadioButton();
             this.defaultRadio = new MaterialSkin.Controls.MaterialRadioButton();
@@ -62,7 +64,11 @@ namespace WoozyBot
             this.shinycheckbox = new MaterialSkin.Controls.MaterialCheckbox();
             this.changePKMCombo = new System.Windows.Forms.ComboBox();
             this.changePKM = new MaterialSkin.Controls.MaterialCheckbox();
-            this.panicButton = new MaterialSkin.Controls.MaterialButton();
+            this.Fish = new System.Windows.Forms.TabPage();
+            this.waterLocationCombo = new System.Windows.Forms.ComboBox();
+            this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
+            this.moveDirectionCombo = new System.Windows.Forms.ComboBox();
+            this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
             inFoText = new MaterialSkin.Controls.MaterialLabel();
             materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
@@ -74,6 +80,7 @@ namespace WoozyBot
             this.groupBoxMove2.SuspendLayout();
             this.materialTabControl1.SuspendLayout();
             this.Pokemon.SuspendLayout();
+            this.Fish.SuspendLayout();
             this.SuspendLayout();
             // 
             // inFoText
@@ -163,6 +170,7 @@ namespace WoozyBot
             this.imageList1.Images.SetKeyName(3, "user_16px.png");
             this.imageList1.Images.SetKeyName(4, "information.png");
             this.imageList1.Images.SetKeyName(5, "pokeball.png");
+            this.imageList1.Images.SetKeyName(6, "canya32.png");
             // 
             // Info
             // 
@@ -331,6 +339,29 @@ namespace WoozyBot
             this.Player.UseVisualStyleBackColor = true;
             this.Player.Click += new System.EventHandler(this.Player_Click);
             // 
+            // panicButton
+            // 
+            this.panicButton.AutoSize = false;
+            this.panicButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panicButton.BackColor = System.Drawing.Color.Transparent;
+            this.panicButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.panicButton.Depth = 0;
+            this.panicButton.DrawShadows = true;
+            this.panicButton.Enabled = false;
+            this.panicButton.HighEmphasis = true;
+            this.panicButton.Icon = null;
+            this.panicButton.Location = new System.Drawing.Point(10, 227);
+            this.panicButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.panicButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.panicButton.Name = "panicButton";
+            this.panicButton.Size = new System.Drawing.Size(67, 36);
+            this.panicButton.TabIndex = 16;
+            this.panicButton.Text = "PANIC";
+            this.panicButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.panicButton.UseAccentColor = true;
+            this.panicButton.UseVisualStyleBackColor = false;
+            this.panicButton.Click += new System.EventHandler(this.panicButton_Click);
+            // 
             // StopButton
             // 
             this.StopButton.AutoSize = false;
@@ -395,6 +426,7 @@ namespace WoozyBot
             // 
             this.groupBoxMove2.AutoScroll = true;
             this.groupBoxMove2.BackColor = System.Drawing.SystemColors.Control;
+            this.groupBoxMove2.Controls.Add(this.fishModeRadio);
             this.groupBoxMove2.Controls.Add(this.randomRadio);
             this.groupBoxMove2.Controls.Add(this.updownRadio);
             this.groupBoxMove2.Controls.Add(this.defaultRadio);
@@ -407,6 +439,25 @@ namespace WoozyBot
             this.groupBoxMove2.Striped = false;
             this.groupBoxMove2.StripeDarkColor = System.Drawing.Color.Empty;
             this.groupBoxMove2.TabIndex = 15;
+            this.groupBoxMove2.Click += new System.EventHandler(this.fishModeRadio_CheckedChanged);
+            // 
+            // fishModeRadio
+            // 
+            this.fishModeRadio.AutoSize = true;
+            this.fishModeRadio.Depth = 0;
+            this.fishModeRadio.Location = new System.Drawing.Point(139, 43);
+            this.fishModeRadio.Margin = new System.Windows.Forms.Padding(0);
+            this.fishModeRadio.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.fishModeRadio.MouseState = MaterialSkin.MouseState.HOVER;
+            this.fishModeRadio.Name = "fishModeRadio";
+            this.fishModeRadio.Ripple = true;
+            this.fishModeRadio.Size = new System.Drawing.Size(65, 37);
+            this.fishModeRadio.TabIndex = 11;
+            this.fishModeRadio.TabStop = true;
+            this.fishModeRadio.Text = "Fish";
+            this.fishModeRadio.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.fishModeRadio.UseVisualStyleBackColor = true;
+            this.fishModeRadio.CheckedChanged += new System.EventHandler(this.fishModeRadio_CheckedChanged);
             // 
             // randomRadio
             // 
@@ -467,9 +518,9 @@ namespace WoozyBot
             this.OpcionesLabel.Location = new System.Drawing.Point(23, 17);
             this.OpcionesLabel.MouseState = MaterialSkin.MouseState.HOVER;
             this.OpcionesLabel.Name = "OpcionesLabel";
-            this.OpcionesLabel.Size = new System.Drawing.Size(146, 19);
+            this.OpcionesLabel.Size = new System.Drawing.Size(42, 19);
             this.OpcionesLabel.TabIndex = 10;
-            this.OpcionesLabel.Text = "Dirección al caminar";
+            this.OpcionesLabel.Text = "Modo";
             this.OpcionesLabel.Click += new System.EventHandler(this.materialLabel1_Click);
             // 
             // materialTabControl1
@@ -478,6 +529,7 @@ namespace WoozyBot
             this.materialTabControl1.Controls.Add(this.Player);
             this.materialTabControl1.Controls.Add(this.Moves);
             this.materialTabControl1.Controls.Add(this.Pokemon);
+            this.materialTabControl1.Controls.Add(this.Fish);
             this.materialTabControl1.Controls.Add(this.Info);
             this.materialTabControl1.Depth = 0;
             this.materialTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -553,28 +605,77 @@ namespace WoozyBot
             this.changePKM.UseVisualStyleBackColor = true;
             this.changePKM.CheckedChanged += new System.EventHandler(this.changePKM_CheckedChanged);
             // 
-            // panicButton
+            // Fish
             // 
-            this.panicButton.AutoSize = false;
-            this.panicButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.panicButton.BackColor = System.Drawing.Color.Transparent;
-            this.panicButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.panicButton.Depth = 0;
-            this.panicButton.DrawShadows = true;
-            this.panicButton.Enabled = false;
-            this.panicButton.HighEmphasis = true;
-            this.panicButton.Icon = null;
-            this.panicButton.Location = new System.Drawing.Point(10, 227);
-            this.panicButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.panicButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.panicButton.Name = "panicButton";
-            this.panicButton.Size = new System.Drawing.Size(67, 36);
-            this.panicButton.TabIndex = 16;
-            this.panicButton.Text = "PANIC";
-            this.panicButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.panicButton.UseAccentColor = true;
-            this.panicButton.UseVisualStyleBackColor = false;
-            this.panicButton.Click += new System.EventHandler(this.panicButton_Click);
+            this.Fish.Controls.Add(this.moveDirectionCombo);
+            this.Fish.Controls.Add(this.materialLabel6);
+            this.Fish.Controls.Add(this.waterLocationCombo);
+            this.Fish.Controls.Add(this.materialLabel5);
+            this.Fish.ImageKey = "canya32.png";
+            this.Fish.Location = new System.Drawing.Point(4, 83);
+            this.Fish.Name = "Fish";
+            this.Fish.Size = new System.Drawing.Size(312, 256);
+            this.Fish.TabIndex = 4;
+            this.Fish.Text = "Fish";
+            this.Fish.UseVisualStyleBackColor = true;
+            // 
+            // waterLocationCombo
+            // 
+            this.waterLocationCombo.DisplayMember = "waterlocation";
+            this.waterLocationCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.waterLocationCombo.Enabled = false;
+            this.waterLocationCombo.FormattingEnabled = true;
+            this.waterLocationCombo.Items.AddRange(new object[] {
+            "TOP",
+            "BOTTOM",
+            "LEFT",
+            "RIGHT"});
+            this.waterLocationCombo.Location = new System.Drawing.Point(9, 32);
+            this.waterLocationCombo.Name = "waterLocationCombo";
+            this.waterLocationCombo.Size = new System.Drawing.Size(105, 21);
+            this.waterLocationCombo.TabIndex = 16;
+            this.waterLocationCombo.ValueMember = "resolution";
+            // 
+            // materialLabel5
+            // 
+            this.materialLabel5.AutoSize = true;
+            this.materialLabel5.BackColor = System.Drawing.Color.Transparent;
+            this.materialLabel5.Depth = 0;
+            this.materialLabel5.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel5.Location = new System.Drawing.Point(9, 10);
+            this.materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel5.Name = "materialLabel5";
+            this.materialLabel5.Size = new System.Drawing.Size(103, 19);
+            this.materialLabel5.TabIndex = 15;
+            this.materialLabel5.Text = "Water location";
+            // 
+            // moveDirectionCombo
+            // 
+            this.moveDirectionCombo.DisplayMember = "movedirection";
+            this.moveDirectionCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.moveDirectionCombo.Enabled = false;
+            this.moveDirectionCombo.FormattingEnabled = true;
+            this.moveDirectionCombo.Items.AddRange(new object[] {
+            "UPDOWN",
+            "LEFTRIGHT"});
+            this.moveDirectionCombo.Location = new System.Drawing.Point(135, 32);
+            this.moveDirectionCombo.Name = "moveDirectionCombo";
+            this.moveDirectionCombo.Size = new System.Drawing.Size(107, 21);
+            this.moveDirectionCombo.TabIndex = 18;
+            this.moveDirectionCombo.ValueMember = "resolution";
+            // 
+            // materialLabel6
+            // 
+            this.materialLabel6.AutoSize = true;
+            this.materialLabel6.BackColor = System.Drawing.Color.Transparent;
+            this.materialLabel6.Depth = 0;
+            this.materialLabel6.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel6.Location = new System.Drawing.Point(135, 10);
+            this.materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel6.Name = "materialLabel6";
+            this.materialLabel6.Size = new System.Drawing.Size(105, 19);
+            this.materialLabel6.TabIndex = 17;
+            this.materialLabel6.Text = "Move direction";
             // 
             // WoozyBot
             // 
@@ -608,6 +709,8 @@ namespace WoozyBot
             this.materialTabControl1.ResumeLayout(false);
             this.Pokemon.ResumeLayout(false);
             this.Pokemon.PerformLayout();
+            this.Fish.ResumeLayout(false);
+            this.Fish.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -639,6 +742,12 @@ namespace WoozyBot
         private System.Windows.Forms.ComboBox changePKMCombo;
         private MaterialSkin.Controls.MaterialCheckbox shinycheckbox;
         private MaterialSkin.Controls.MaterialButton panicButton;
+        private MaterialSkin.Controls.MaterialRadioButton fishModeRadio;
+        private System.Windows.Forms.TabPage Fish;
+        private System.Windows.Forms.ComboBox waterLocationCombo;
+        private MaterialSkin.Controls.MaterialLabel materialLabel5;
+        private System.Windows.Forms.ComboBox moveDirectionCombo;
+        private MaterialSkin.Controls.MaterialLabel materialLabel6;
     }
 }
 

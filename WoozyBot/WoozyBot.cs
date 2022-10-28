@@ -25,6 +25,8 @@ namespace WoozyBot
         public int resolutionX, resolutionY;
         public Boolean iniciobatalla;
         public string PokemonPos;
+        public string waterLocation;
+        public string moveDirection;
 
         public WoozyBot()
         {
@@ -40,6 +42,8 @@ namespace WoozyBot
         {
             backgroundWorker1.WorkerSupportsCancellation = true;
             resolutionCombo.SelectedItem = "1920x1080";
+            waterLocationCombo.SelectedItem = "TOP";
+            moveDirectionCombo.SelectedItem = "UPDOWN";
             changePKMCombo.SelectedItem = "Segundo";
         }
         public void Start()
@@ -55,6 +59,8 @@ namespace WoozyBot
                     getGamePosition();
                     getGetResolutionGame();
                     PokemonPos = changePKMCombo.SelectedItem.ToString();
+                    waterLocation = waterLocationCombo.SelectedItem.ToString();
+                    moveDirection = moveDirectionCombo.SelectedItem.ToString();
                     au3.WinActivate("PokeOne"); //Se situa sobre el juego
                 }
             }
@@ -152,6 +158,10 @@ namespace WoozyBot
                 {
                     atacar();
                 }
+                else
+                {
+                    MessageBox.Show("Coming soon...");
+                }
             }
         }
 
@@ -223,11 +233,76 @@ namespace WoozyBot
                     moveAction(direccion[0]);
                     moveAction(direccion[1]);
                     break;
+                case "fishModeRadio":
+                    FishModeMove();
+                    break;
                 default:
                     moveAction(direccion[2]);
                     moveAction(direccion[3]);
                     break;
 
+            }
+        }
+
+        void FishModeMove()
+        {
+            switch (waterLocation)
+            {
+                case "TOP":
+                    fishmovement(moveDirection, 4);
+                    au3.Send("ww");
+                    au3.Send("ww");
+                    Thread.Sleep(500);
+                    au3.Send("1");
+                    Thread.Sleep(500);
+                    break;
+                case "bottom":
+                    fishmovement(moveDirection, 4);
+                    au3.Send("ss");
+                    au3.Send("ss");
+                    Thread.Sleep(500);
+                    au3.Send("1");
+                    Thread.Sleep(500);
+                    break;
+                case "LEFT":
+                    fishmovement(moveDirection, 4);
+                    au3.Send("aa");
+                    au3.Send("aa");
+                    Thread.Sleep(500);
+                    au3.Send("1");
+                    Thread.Sleep(500);
+                    break;
+                case "RIGHT":
+                    fishmovement(moveDirection, 4);
+                    au3.Send("dd");
+                    au3.Send("dd");
+                    Thread.Sleep(500);
+                    au3.Send("1");
+                    Thread.Sleep(500);
+                    break;
+            }
+        }
+
+        void fishmovement(string direction, int steps)
+        {
+            Random r = new Random();
+            for (int i = 0; i < steps; i++)
+            {
+                if(direction == "UPDOWN")
+                {
+                    au3.Send("w");
+                    au3.Send("w");
+                    au3.Send("s");
+                    au3.Send("s");
+                }
+                else
+                {
+                    au3.Send("a");
+                    au3.Send("a");
+                    au3.Send("d");
+                    au3.Send("d");
+                }
+                Thread.Sleep(r.Next(100,300));
             }
         }
 
@@ -315,10 +390,27 @@ namespace WoozyBot
 
         }
 
-        private void move2_CheckedChanged(object sender, EventArgs e)
+        private void panicButton_Click(object sender, EventArgs e)
         {
-
+            Application.Exit();
         }
+
+        private void fishModeRadio_CheckedChanged(object sender, EventArgs e)
+        {
+            string mode = groupBoxMove2.Controls.OfType<RadioButton>().FirstOrDefault(j => j.Checked).Name;
+            MessageBox.Show(mode);
+            if (mode == "fishModeRadio")
+            {
+                waterLocationCombo.Enabled = true;
+                moveDirectionCombo.Enabled = true;
+            }
+            else
+            {
+                waterLocationCombo.Enabled = false;
+                moveDirectionCombo.Enabled = false;
+            }
+        }
+
 
         private void changePKM_CheckedChanged(object sender, EventArgs e)
         {
@@ -338,6 +430,11 @@ namespace WoozyBot
             {
                 Application.Exit();
             }
+        }
+
+        private void move2_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
 
         private void materialLabel1_Click(object sender, EventArgs e)
@@ -373,11 +470,6 @@ namespace WoozyBot
         private void materialLabel2_Click(object sender, EventArgs e)
         {
 
-        }
-
-        private void panicButton_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
         }
 
         private void materialLabel1_Click_3(object sender, EventArgs e)
