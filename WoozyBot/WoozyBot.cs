@@ -158,10 +158,6 @@ namespace WoozyBot
                 {
                     atacar();
                 }
-                else
-                {
-                    MessageBox.Show("Coming soon...");
-                }
             }
         }
 
@@ -173,7 +169,7 @@ namespace WoozyBot
             //1080x720
             //au3.MouseClick("LEFT", PokeOneWindowX + 691, PokeOneWindowY + 616, 1, 2);
             au3.MouseClick("LEFT", PokeOneWindowX + 993, PokeOneWindowY + 976, 1, 2);
-            Thread.Sleep(r.Next(500, 600));
+            Thread.Sleep(r.Next(200, 500));
             if (move1.Checked)
             //if (detectarPixel(0x828282, 745, 873,1920,1080) == false && move1.Checked)
             {
@@ -182,7 +178,6 @@ namespace WoozyBot
                 //au3.MouseClick("LEFT", PokeOneWindowX + 595, PokeOneWindowY + 553, 1, 2);//Move 1
                 au3.MouseClick("LEFT", PokeOneWindowX + 884, PokeOneWindowY + 889, 1, 2);//Move 1
             }
-            Thread.Sleep(r.Next(500, 600));
             if (move2.Checked)
             //else if (detectarPixel(0x828282, 1160, 870,1920,1080) == false && move2.Checked)
             {
@@ -191,7 +186,6 @@ namespace WoozyBot
                 au3.MouseClick("LEFT", PokeOneWindowX + 1129, PokeOneWindowY + 889, 1, 2);//Move 2
                 //1080x720//au3.MouseClick("LEFT", PokeOneWindowX + 806, PokeOneWindowY + 553, 1, 2);//Move 2
             }
-            Thread.Sleep(r.Next(500, 600));
             //else if (detectarPixel(0x828282, 752, 953,1920,1080) == false && move3.Checked)
             if (move3.Checked)
             {
@@ -199,7 +193,6 @@ namespace WoozyBot
                 au3.MouseClick("LEFT", PokeOneWindowX + 898, PokeOneWindowY + 982, 1, 2);//Move 3
                 //1080x720//au3.MouseClick("LEFT", PokeOneWindowX + 574, PokeOneWindowY + 618, 1, 2);//Move 3
             }
-            Thread.Sleep(r.Next(500, 600));
             if (move4.Checked)
             {
                 Thread.Sleep(r.Next(50,70));
@@ -249,7 +242,8 @@ namespace WoozyBot
             switch (waterLocation)
             {
                 case "TOP":
-                    fishmovement(moveDirection, 4);
+                    fishmovement(moveDirection, 6);
+                    Thread.Sleep(100);
                     au3.Send("ww");
                     au3.Send("ww");
                     Thread.Sleep(500);
@@ -257,7 +251,8 @@ namespace WoozyBot
                     Thread.Sleep(500);
                     break;
                 case "bottom":
-                    fishmovement(moveDirection, 4);
+                    fishmovement(moveDirection, 6);
+                    Thread.Sleep(100);
                     au3.Send("ss");
                     au3.Send("ss");
                     Thread.Sleep(500);
@@ -265,7 +260,8 @@ namespace WoozyBot
                     Thread.Sleep(500);
                     break;
                 case "LEFT":
-                    fishmovement(moveDirection, 4);
+                    fishmovement(moveDirection, 6);
+                    Thread.Sleep(100);
                     au3.Send("aa");
                     au3.Send("aa");
                     Thread.Sleep(500);
@@ -273,7 +269,8 @@ namespace WoozyBot
                     Thread.Sleep(500);
                     break;
                 case "RIGHT":
-                    fishmovement(moveDirection, 4);
+                    fishmovement(moveDirection, 6);
+                    Thread.Sleep(100);
                     au3.Send("dd");
                     au3.Send("dd");
                     Thread.Sleep(500);
