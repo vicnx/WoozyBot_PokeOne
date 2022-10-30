@@ -1,0 +1,1 @@
+# Bypass VMWARE to play PokeONE (or other games)

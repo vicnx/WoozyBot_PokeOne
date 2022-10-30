@@ -35,11 +35,13 @@ namespace WoozyBot
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkin.MaterialSkinManager.Themes.DARK;
             materialSkinManager.EnforceBackcolorOnAllComponents = false;
+
             materialSkinManager.ColorScheme = new MaterialSkin.ColorScheme(MaterialSkin.Primary.Green500, MaterialSkin.Primary.Green700, MaterialSkin.Primary.Green100, MaterialSkin.Accent.Green700, MaterialSkin.TextShade.WHITE);
         }
 
         private void WoozyBot_Load(object sender, EventArgs e)
         {
+            backgroundWorker1.WorkerReportsProgress = true; //Report a progress
             backgroundWorker1.WorkerSupportsCancellation = true;
             resolutionCombo.SelectedItem = "1920x1080";
             waterLocationCombo.SelectedItem = "TOP";
@@ -103,6 +105,7 @@ namespace WoozyBot
 
             Random r = new Random();
             BackgroundWorker worker = sender as BackgroundWorker;
+            int cont = 0;
             while (checkGameOpen())
             {
                 if (worker.CancellationPending == true)
@@ -114,8 +117,16 @@ namespace WoozyBot
                 movePlayer();
                 while (PixelDetect(0x9CE799, 30, 40) == true || PixelDetect(0x69A226, 1094, 1041))
                 {
+                    backgroundWorker1.ReportProgress(cont);
+                    cont = cont + 1;
+                    if (worker.CancellationPending == true)
+                    {
+                        e.Cancel = true;
+                        break;
+                    }
                     if (PixelDetect(0xAA2826, 912, 975) == true || PixelDetect(0x69A226, 1094, 1041)) // Boton atacar o huir
                     {
+
                         if (iniciobatalla == true)
                         {
                             if (changePKM.Checked)

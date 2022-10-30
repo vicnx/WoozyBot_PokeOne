@@ -1,6 +1,9 @@
 D:\vicen\Documents\Proyectos\Windows\WoozyBot_PokeOne\WoozyBot\bin\Release\WoozyBot.exe.config
+D:\vicen\Documents\Proyectos\Windows\WoozyBot_PokeOne\WoozyBot\bin\Release\WoozyBot.exe.manifest
+D:\vicen\Documents\Proyectos\Windows\WoozyBot_PokeOne\WoozyBot\bin\Release\WoozyBot.application
 D:\vicen\Documents\Proyectos\Windows\WoozyBot_PokeOne\WoozyBot\bin\Release\WoozyBot.exe
 D:\vicen\Documents\Proyectos\Windows\WoozyBot_PokeOne\WoozyBot\bin\Release\WoozyBot.pdb
+D:\vicen\Documents\Proyectos\Windows\WoozyBot_PokeOne\WoozyBot\bin\Release\System.Diagnostics.DiagnosticSource.xml
 D:\vicen\Documents\Proyectos\Windows\WoozyBot_PokeOne\WoozyBot\obj\Release\WoozyBot.csproj.AssemblyReference.cache
 D:\vicen\Documents\Proyectos\Windows\WoozyBot_PokeOne\WoozyBot\obj\Release\WoozyBot.csproj.SuggestedBindingRedirects.cache
 D:\vicen\Documents\Proyectos\Windows\WoozyBot_PokeOne\WoozyBot\obj\Release\Interop.AutoItX3Lib.dll
@@ -9,8 +12,11 @@ D:\vicen\Documents\Proyectos\Windows\WoozyBot_PokeOne\WoozyBot\obj\Release\Woozy
 D:\vicen\Documents\Proyectos\Windows\WoozyBot_PokeOne\WoozyBot\obj\Release\WoozyBot.Properties.Resources.resources
 D:\vicen\Documents\Proyectos\Windows\WoozyBot_PokeOne\WoozyBot\obj\Release\WoozyBot.csproj.GenerateResource.cache
 D:\vicen\Documents\Proyectos\Windows\WoozyBot_PokeOne\WoozyBot\obj\Release\WoozyBot.csproj.CoreCompileInputs.cache
+D:\vicen\Documents\Proyectos\Windows\WoozyBot_PokeOne\WoozyBot\obj\Release\WoozyBot.csproj.Fody.CopyLocal.cache
+D:\vicen\Documents\Proyectos\Windows\WoozyBot_PokeOne\WoozyBot\obj\Release\WoozyBot.TrustInfo.xml
+D:\vicen\Documents\Proyectos\Windows\WoozyBot_PokeOne\WoozyBot\obj\Release\WoozyBot.exe.manifest
+D:\vicen\Documents\Proyectos\Windows\WoozyBot_PokeOne\WoozyBot\obj\Release\WoozyBot.application
 D:\vicen\Documents\Proyectos\Windows\WoozyBot_PokeOne\WoozyBot\obj\Release\WoozyBot.csproj.CopyComplete
 D:\vicen\Documents\Proyectos\Windows\WoozyBot_PokeOne\WoozyBot\obj\Release\WoozyBot.exe
 D:\vicen\Documents\Proyectos\Windows\WoozyBot_PokeOne\WoozyBot\obj\Release\WoozyBot.pdb
-D:\vicen\Documents\Proyectos\Windows\WoozyBot_PokeOne\WoozyBot\bin\Release\System.Diagnostics.DiagnosticSource.xml
-D:\vicen\Documents\Proyectos\Windows\WoozyBot_PokeOne\WoozyBot\obj\Release\WoozyBot.csproj.Fody.CopyLocal.cache
+D:\vicen\Documents\Proyectos\Windows\WoozyBot_PokeOne\WoozyBot\bin\Release\Interop.AutoItX3Lib.dll
