@@ -65,10 +65,10 @@ namespace WoozyBot
             this.changePKMCombo = new System.Windows.Forms.ComboBox();
             this.changePKM = new MaterialSkin.Controls.MaterialCheckbox();
             this.Fish = new System.Windows.Forms.TabPage();
-            this.waterLocationCombo = new System.Windows.Forms.ComboBox();
-            this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
             this.moveDirectionCombo = new System.Windows.Forms.ComboBox();
             this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
+            this.waterLocationCombo = new System.Windows.Forms.ComboBox();
+            this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
             inFoText = new MaterialSkin.Controls.MaterialLabel();
             materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
@@ -97,7 +97,6 @@ namespace WoozyBot
             inFoText.TabIndex = 1;
             inFoText.Text = "Para que el BOT funcione correctamente tienes que añadir la resolución del juego " +
     "en la pestaña de configuración.\r\n";
-            inFoText.Click += new System.EventHandler(this.materialLabel1_Click_2);
             // 
             // materialLabel2
             // 
@@ -117,7 +116,6 @@ namespace WoozyBot
             materialLabel2.Text = "Este programa se ha creado con fines educativos. \r\nEn ningún caso se recomienda u" +
     "tilizar, no me hago responsable de posibles baneos/bloqueos de cuentas.";
             materialLabel2.UseAccent = true;
-            materialLabel2.Click += new System.EventHandler(this.materialLabel2_Click);
             // 
             // materialLabel3
             // 
@@ -136,7 +134,6 @@ namespace WoozyBot
             materialLabel3.TabIndex = 3;
             materialLabel3.Text = "Coming soon...\r\n";
             materialLabel3.UseAccent = true;
-            materialLabel3.Click += new System.EventHandler(this.materialLabel1_Click_3);
             // 
             // materialLabel4
             // 
@@ -242,7 +239,6 @@ namespace WoozyBot
             this.materialLabel1.Size = new System.Drawing.Size(147, 19);
             this.materialLabel1.TabIndex = 13;
             this.materialLabel1.Text = "Resolución del juego";
-            this.materialLabel1.Click += new System.EventHandler(this.materialLabel1_Click_3);
             // 
             // move1
             // 
@@ -273,7 +269,6 @@ namespace WoozyBot
             this.movausarLabel.Size = new System.Drawing.Size(92, 19);
             this.movausarLabel.TabIndex = 11;
             this.movausarLabel.Text = "Movs. a usar";
-            this.movausarLabel.Click += new System.EventHandler(this.movausarLabel_Click);
             // 
             // move4
             // 
@@ -304,7 +299,6 @@ namespace WoozyBot
             this.move2.TabIndex = 6;
             this.move2.Text = "Movimiento 2";
             this.move2.UseVisualStyleBackColor = true;
-            this.move2.CheckedChanged += new System.EventHandler(this.move2_CheckedChanged);
             // 
             // move3
             // 
@@ -337,7 +331,6 @@ namespace WoozyBot
             this.Player.TabIndex = 0;
             this.Player.Text = "Player";
             this.Player.UseVisualStyleBackColor = true;
-            this.Player.Click += new System.EventHandler(this.Player_Click);
             // 
             // panicButton
             // 
@@ -399,7 +392,6 @@ namespace WoozyBot
             this.AlwaysRun.TabIndex = 3;
             this.AlwaysRun.Text = "Huir Siempre";
             this.AlwaysRun.UseVisualStyleBackColor = true;
-            this.AlwaysRun.CheckedChanged += new System.EventHandler(this.AlwaysRun_CheckedChanged);
             // 
             // StartButton
             // 
@@ -521,7 +513,6 @@ namespace WoozyBot
             this.OpcionesLabel.Size = new System.Drawing.Size(42, 19);
             this.OpcionesLabel.TabIndex = 10;
             this.OpcionesLabel.Text = "Modo";
-            this.OpcionesLabel.Click += new System.EventHandler(this.materialLabel1_Click);
             // 
             // materialTabControl1
             // 
@@ -561,6 +552,8 @@ namespace WoozyBot
             // shinycheckbox
             // 
             this.shinycheckbox.AutoSize = true;
+            this.shinycheckbox.Checked = true;
+            this.shinycheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.shinycheckbox.Cursor = System.Windows.Forms.Cursors.Default;
             this.shinycheckbox.Depth = 0;
             this.shinycheckbox.Location = new System.Drawing.Point(5, 79);
@@ -619,6 +612,34 @@ namespace WoozyBot
             this.Fish.Text = "Fish";
             this.Fish.UseVisualStyleBackColor = true;
             // 
+            // moveDirectionCombo
+            // 
+            this.moveDirectionCombo.DisplayMember = "movedirection";
+            this.moveDirectionCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.moveDirectionCombo.Enabled = false;
+            this.moveDirectionCombo.FormattingEnabled = true;
+            this.moveDirectionCombo.Items.AddRange(new object[] {
+            "UPDOWN",
+            "LEFTRIGHT"});
+            this.moveDirectionCombo.Location = new System.Drawing.Point(135, 32);
+            this.moveDirectionCombo.Name = "moveDirectionCombo";
+            this.moveDirectionCombo.Size = new System.Drawing.Size(107, 21);
+            this.moveDirectionCombo.TabIndex = 18;
+            this.moveDirectionCombo.ValueMember = "resolution";
+            // 
+            // materialLabel6
+            // 
+            this.materialLabel6.AutoSize = true;
+            this.materialLabel6.BackColor = System.Drawing.Color.Transparent;
+            this.materialLabel6.Depth = 0;
+            this.materialLabel6.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel6.Location = new System.Drawing.Point(135, 10);
+            this.materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel6.Name = "materialLabel6";
+            this.materialLabel6.Size = new System.Drawing.Size(105, 19);
+            this.materialLabel6.TabIndex = 17;
+            this.materialLabel6.Text = "Move direction";
+            // 
             // waterLocationCombo
             // 
             this.waterLocationCombo.DisplayMember = "waterlocation";
@@ -648,34 +669,6 @@ namespace WoozyBot
             this.materialLabel5.Size = new System.Drawing.Size(103, 19);
             this.materialLabel5.TabIndex = 15;
             this.materialLabel5.Text = "Water location";
-            // 
-            // moveDirectionCombo
-            // 
-            this.moveDirectionCombo.DisplayMember = "movedirection";
-            this.moveDirectionCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.moveDirectionCombo.Enabled = false;
-            this.moveDirectionCombo.FormattingEnabled = true;
-            this.moveDirectionCombo.Items.AddRange(new object[] {
-            "UPDOWN",
-            "LEFTRIGHT"});
-            this.moveDirectionCombo.Location = new System.Drawing.Point(135, 32);
-            this.moveDirectionCombo.Name = "moveDirectionCombo";
-            this.moveDirectionCombo.Size = new System.Drawing.Size(107, 21);
-            this.moveDirectionCombo.TabIndex = 18;
-            this.moveDirectionCombo.ValueMember = "resolution";
-            // 
-            // materialLabel6
-            // 
-            this.materialLabel6.AutoSize = true;
-            this.materialLabel6.BackColor = System.Drawing.Color.Transparent;
-            this.materialLabel6.Depth = 0;
-            this.materialLabel6.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel6.Location = new System.Drawing.Point(135, 10);
-            this.materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel6.Name = "materialLabel6";
-            this.materialLabel6.Size = new System.Drawing.Size(105, 19);
-            this.materialLabel6.TabIndex = 17;
-            this.materialLabel6.Text = "Move direction";
             // 
             // WoozyBot
             // 

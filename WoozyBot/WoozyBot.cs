@@ -242,7 +242,7 @@ namespace WoozyBot
             switch (waterLocation)
             {
                 case "TOP":
-                    fishmovement(moveDirection, 6);
+                    fishmovement(moveDirection, 10);
                     Thread.Sleep(100);
                     au3.Send("ww");
                     au3.Send("ww");
@@ -251,7 +251,7 @@ namespace WoozyBot
                     Thread.Sleep(500);
                     break;
                 case "bottom":
-                    fishmovement(moveDirection, 6);
+                    fishmovement(moveDirection, 10);
                     Thread.Sleep(100);
                     au3.Send("ss");
                     au3.Send("ss");
@@ -260,7 +260,7 @@ namespace WoozyBot
                     Thread.Sleep(500);
                     break;
                 case "LEFT":
-                    fishmovement(moveDirection, 6);
+                    fishmovement(moveDirection, 10);
                     Thread.Sleep(100);
                     au3.Send("aa");
                     au3.Send("aa");
@@ -269,7 +269,7 @@ namespace WoozyBot
                     Thread.Sleep(500);
                     break;
                 case "RIGHT":
-                    fishmovement(moveDirection, 6);
+                    fishmovement(moveDirection, 10);
                     Thread.Sleep(100);
                     au3.Send("dd");
                     au3.Send("dd");
@@ -287,19 +287,15 @@ namespace WoozyBot
             {
                 if(direction == "UPDOWN")
                 {
-                    au3.Send("w");
-                    au3.Send("w");
-                    au3.Send("s");
-                    au3.Send("s");
+                    au3.Send("ww");
+                    au3.Send("ss");
                 }
                 else
                 {
-                    au3.Send("a");
-                    au3.Send("a");
-                    au3.Send("d");
-                    au3.Send("d");
+                    au3.Send("aa");
+                    au3.Send("dd");
                 }
-                Thread.Sleep(r.Next(100,300));
+                Thread.Sleep(r.Next(90,150));
             }
         }
 
@@ -427,56 +423,6 @@ namespace WoozyBot
             {
                 Application.Exit();
             }
-        }
-
-        private void move2_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void materialLabel1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void AlwaysRun_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBoxOptions_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void materialLabel1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void materialLabel1_Click_2(object sender, EventArgs e)
-        {
-
-        }
-
-        private void movausarLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void materialLabel2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void materialLabel1_Click_3(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Player_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
