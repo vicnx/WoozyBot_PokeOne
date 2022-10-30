@@ -1,7 +1,6 @@
 D:\vicen\Documents\Proyectos\Windows\WoozyBot_PokeOne\WoozyBot\bin\Release\WoozyBot.exe.config
 D:\vicen\Documents\Proyectos\Windows\WoozyBot_PokeOne\WoozyBot\bin\Release\WoozyBot.exe
 D:\vicen\Documents\Proyectos\Windows\WoozyBot_PokeOne\WoozyBot\bin\Release\WoozyBot.pdb
-D:\vicen\Documents\Proyectos\Windows\WoozyBot_PokeOne\WoozyBot\bin\Release\MaterialSkin.dll
 D:\vicen\Documents\Proyectos\Windows\WoozyBot_PokeOne\WoozyBot\obj\Release\WoozyBot.csproj.AssemblyReference.cache
 D:\vicen\Documents\Proyectos\Windows\WoozyBot_PokeOne\WoozyBot\obj\Release\WoozyBot.csproj.SuggestedBindingRedirects.cache
 D:\vicen\Documents\Proyectos\Windows\WoozyBot_PokeOne\WoozyBot\obj\Release\Interop.AutoItX3Lib.dll
@@ -13,3 +12,5 @@ D:\vicen\Documents\Proyectos\Windows\WoozyBot_PokeOne\WoozyBot\obj\Release\Woozy
 D:\vicen\Documents\Proyectos\Windows\WoozyBot_PokeOne\WoozyBot\obj\Release\WoozyBot.csproj.CopyComplete
 D:\vicen\Documents\Proyectos\Windows\WoozyBot_PokeOne\WoozyBot\obj\Release\WoozyBot.exe
 D:\vicen\Documents\Proyectos\Windows\WoozyBot_PokeOne\WoozyBot\obj\Release\WoozyBot.pdb
+D:\vicen\Documents\Proyectos\Windows\WoozyBot_PokeOne\WoozyBot\bin\Release\System.Diagnostics.DiagnosticSource.xml
+D:\vicen\Documents\Proyectos\Windows\WoozyBot_PokeOne\WoozyBot\obj\Release\WoozyBot.csproj.Fody.CopyLocal.cache
