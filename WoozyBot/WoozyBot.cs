@@ -27,6 +27,7 @@ namespace WoozyBot
         public string PokemonPos;
         public string waterLocation;
         public string moveDirection;
+        public string resolutionSelected;
 
         public WoozyBot()
         {
@@ -43,7 +44,7 @@ namespace WoozyBot
         {
             backgroundWorker1.WorkerReportsProgress = true; //Report a progress
             backgroundWorker1.WorkerSupportsCancellation = true;
-            resolutionCombo.SelectedItem = "1920x1080";
+            resolutionCombo.SelectedItem = "1280x720";
             waterLocationCombo.SelectedItem = "TOP";
             moveDirectionCombo.SelectedItem = "UPDOWN";
             changePKMCombo.SelectedItem = "Segundo";
@@ -63,6 +64,7 @@ namespace WoozyBot
                     PokemonPos = changePKMCombo.SelectedItem.ToString();
                     waterLocation = waterLocationCombo.SelectedItem.ToString();
                     moveDirection = moveDirectionCombo.SelectedItem.ToString();
+                    resolutionSelected = resolutionCombo.SelectedItem.ToString();
                     au3.WinActivate("PokeOne"); //Se situa sobre el juego
                 }
             }
@@ -73,7 +75,6 @@ namespace WoozyBot
         }
         public void Stop()
         {
-            MessageBox.Show("Si estas en medio de un combate el BOT parará al finalizar.");
             if (backgroundWorker1.IsBusy != false)
             {
                 backgroundWorker1.CancelAsync();
@@ -115,33 +116,7 @@ namespace WoozyBot
                 }
                 iniciobatalla = true;
                 movePlayer();
-                while (PixelDetect(0x9CE799, 30, 40) == true || PixelDetect(0x69A226, 1094, 1041))
-                {
-                    backgroundWorker1.ReportProgress(cont);
-                    cont = cont + 1;
-                    if (worker.CancellationPending == true)
-                    {
-                        e.Cancel = true;
-                        break;
-                    }
-                    if (PixelDetect(0xAA2826, 912, 975) == true || PixelDetect(0x69A226, 1094, 1041)) // Boton atacar o huir
-                    {
-
-                        if (iniciobatalla == true)
-                        {
-                            if (changePKM.Checked)
-                            {
-                                changePokemon();
-                            }
-                            iniciobatalla = false;
-                        }
-                        else
-                        {
-                            combate();
-                        }
-                    }
-
-                }
+                combat(cont, worker, e);
             }
             if (checkGameOpen())
             {
@@ -177,38 +152,69 @@ namespace WoozyBot
             Random r = new Random();
             //Refrescamos la posicion del juego para evitar errores
             getGamePosition();
-            //1080x720
-            //au3.MouseClick("LEFT", PokeOneWindowX + 691, PokeOneWindowY + 616, 1, 2);
-            au3.MouseClick("LEFT", PokeOneWindowX + 993, PokeOneWindowY + 976, 1, 2);
+            switch (resolutionSelected)
+            {
+                case "1920x1080":
+                    au3.MouseClick("LEFT", PokeOneWindowX + 993, PokeOneWindowY + 976, 1, 2);
+                    break;
+                case "1280x720":
+                    au3.MouseClick("LEFT", PokeOneWindowX + 694, PokeOneWindowY + 645, 1, 2);
+                    break;
+            }
             Thread.Sleep(r.Next(200, 500));
             if (move1.Checked)
-            //if (detectarPixel(0x828282, 745, 873,1920,1080) == false && move1.Checked)
             {
                 Thread.Sleep(r.Next(50, 70));
-                //1080x720
-                //au3.MouseClick("LEFT", PokeOneWindowX + 595, PokeOneWindowY + 553, 1, 2);//Move 1
-                au3.MouseClick("LEFT", PokeOneWindowX + 884, PokeOneWindowY + 889, 1, 2);//Move 1
+                switch (resolutionSelected)
+                {
+                    case "1920x1080":
+                        au3.MouseClick("LEFT", PokeOneWindowX + 884, PokeOneWindowY + 889, 1, 2);//Move 1
+                        break;
+                    case "1280x720":
+                        au3.MouseClick("LEFT", PokeOneWindowX + 469, PokeOneWindowY + 563, 1, 2);//Move 1
+                        break;
+                }
             }
             if (move2.Checked)
-            //else if (detectarPixel(0x828282, 1160, 870,1920,1080) == false && move2.Checked)
             {
                 Thread.Sleep(r.Next(50, 70));
-
-                au3.MouseClick("LEFT", PokeOneWindowX + 1129, PokeOneWindowY + 889, 1, 2);//Move 2
-                //1080x720//au3.MouseClick("LEFT", PokeOneWindowX + 806, PokeOneWindowY + 553, 1, 2);//Move 2
+                switch (resolutionSelected)
+                {
+                    case "1920x1080":
+                        au3.MouseClick("LEFT", PokeOneWindowX + 1129, PokeOneWindowY + 889, 1, 2);//Move 2
+                        break;
+                    case "1280x720":
+                        au3.MouseClick("LEFT", PokeOneWindowX + 822, PokeOneWindowY + 570, 1, 2);//Move 2
+                        break;
+                }
             }
-            //else if (detectarPixel(0x828282, 752, 953,1920,1080) == false && move3.Checked)
             if (move3.Checked)
             {
                 Thread.Sleep(r.Next(50, 70));
-                au3.MouseClick("LEFT", PokeOneWindowX + 898, PokeOneWindowY + 982, 1, 2);//Move 3
-                //1080x720//au3.MouseClick("LEFT", PokeOneWindowX + 574, PokeOneWindowY + 618, 1, 2);//Move 3
+                switch (resolutionSelected)
+                {
+                    case "1920x1080":
+                        au3.MouseClick("LEFT", PokeOneWindowX + 898, PokeOneWindowY + 982, 1, 2);//Move 3
+
+                        break;
+                    case "1280x720":
+                        au3.MouseClick("LEFT", PokeOneWindowX + 469, PokeOneWindowY + 643, 1, 2);//Move 3
+                        break;
+                }
             }
             if (move4.Checked)
             {
                 Thread.Sleep(r.Next(50,70));
-                au3.MouseClick("LEFT", PokeOneWindowX + 1121, PokeOneWindowY + 982, 1, 2);//Move 4
-                //1080x720//au3.MouseClick("LEFT", PokeOneWindowX + 824, PokeOneWindowY + 618, 1, 2);//Move 4
+                switch (resolutionSelected)
+                {
+                    case "1920x1080":
+                        au3.MouseClick("LEFT", PokeOneWindowX + 1121, PokeOneWindowY + 982, 1, 2);//Move 4
+
+                        break;
+                    case "1280x720":
+                        au3.MouseClick("LEFT", PokeOneWindowX + 819, PokeOneWindowY + 645, 1, 2);//Move 4
+                        break;
+                }
             }
         }
 
@@ -356,12 +362,26 @@ namespace WoozyBot
 
         void changePokemon()
         {
-            au3.MouseClick("LEFT", PokeOneWindowX + 840, PokeOneWindowY + 1041, 1, 2);
-            Thread.Sleep(300);
-            if (PokemonPos == "Segundo")
+            switch (resolutionSelected)
             {
-                au3.MouseClick("LEFT", PokeOneWindowX + 971, PokeOneWindowY + 395, 1, 2);
+                case "1920x1080":
+                    au3.MouseClick("LEFT", PokeOneWindowX + 840, PokeOneWindowY + 1041, 1, 2);
+                    Thread.Sleep(300);
+                    if (PokemonPos == "Segundo")
+                    {
+                        au3.MouseClick("LEFT", PokeOneWindowX + 971, PokeOneWindowY + 395, 1, 2);
 
+                    }
+                    break;
+                case "1280x720":
+                    au3.MouseClick("LEFT", PokeOneWindowX + 531, PokeOneWindowY + 715, 1, 2);
+                    Thread.Sleep(300);
+                    if (PokemonPos == "Segundo")
+                    {
+                        au3.MouseClick("LEFT", PokeOneWindowX + 653, PokeOneWindowY + 251, 1, 2);
+
+                    }
+                    break;
             }
         }
         
@@ -369,6 +389,21 @@ namespace WoozyBot
         {
             if (shinycheckbox.Checked)
             {
+                int x = 1280;
+                int y = 720;
+                switch (resolutionSelected)
+                {
+                    case "1920x1080":
+                        x = 1920;
+                        y = 1080;
+                        break;
+                    case "1280x720":
+                        x = 1280;
+                        y = 720;
+                        break;
+                    default:
+                        break;
+                }
                 object pix = au3.PixelSearch(0, 0, 1920, 1080, 0x512F00);
                 if (pix.ToString() != "1")
                 {
@@ -394,6 +429,62 @@ namespace WoozyBot
 
         }
 
+        private void combat(int cont, BackgroundWorker worker, DoWorkEventArgs e)
+        {
+            int hpTopX=0, hpTopY=0, pixelHP=0x9CE799;
+            int attackX=0, attackY = 0, pixelattack = 0xAA2826;
+            int runX=0, runY = 0, pixelrun = 0x69A226;
+            switch (resolutionSelected)
+            {
+                case "1920x1080":
+                    hpTopX = 30;
+                    hpTopY = 40;
+                    attackX = 912;
+                    attackY = 975;
+                    runX = 1094;
+                    runY = 1041;
+                    break;
+                case "1280x720":
+                    hpTopX = 50;
+                    hpTopY = 76;
+                    attackX = 608;
+                    attackY = 646;
+                    runX = 772;
+                    runY = 712;
+                    break;
+                default:
+                    break;
+
+            }
+            while (PixelDetect(pixelHP, hpTopX, hpTopY) == true || PixelDetect(pixelrun, runX, runY)) //color hp arriba derecha
+            {
+                backgroundWorker1.ReportProgress(cont);
+                cont = cont + 1;
+                if (worker.CancellationPending == true)
+                {
+                    e.Cancel = true;
+                    break;
+                }
+                if (PixelDetect(pixelattack, attackX, attackY) == true || PixelDetect(pixelrun, runX, runY)) // Boton atacar o huir
+                {
+
+                    if (iniciobatalla == true)
+                    {
+                        if (changePKM.Checked)
+                        {
+                            changePokemon();
+                        }
+                        iniciobatalla = false;
+                    }
+                    else
+                    {
+                        combate();
+                    }
+                }
+
+            }
+        }
+
         private void panicButton_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -402,7 +493,6 @@ namespace WoozyBot
         private void fishModeRadio_CheckedChanged(object sender, EventArgs e)
         {
             string mode = groupBoxMove2.Controls.OfType<RadioButton>().FirstOrDefault(j => j.Checked).Name;
-            MessageBox.Show(mode);
             if (mode == "fishModeRadio")
             {
                 waterLocationCombo.Enabled = true;

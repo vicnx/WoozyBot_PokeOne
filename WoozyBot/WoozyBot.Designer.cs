@@ -220,7 +220,8 @@ namespace WoozyBot
             this.resolutionCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.resolutionCombo.FormattingEnabled = true;
             this.resolutionCombo.Items.AddRange(new object[] {
-            "1920x1080"});
+            "1920x1080",
+            "1280x720"});
             this.resolutionCombo.Location = new System.Drawing.Point(40, 219);
             this.resolutionCombo.Name = "resolutionCombo";
             this.resolutionCombo.Size = new System.Drawing.Size(150, 21);
